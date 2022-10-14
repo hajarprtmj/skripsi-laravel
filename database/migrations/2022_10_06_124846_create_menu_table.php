@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->integer('level')->default('2');
-            $table->rememberToken();
+        Schema::create('menu', function (Blueprint $table) {
+            $table->id('id_menu');
+            $table->string('nama_makanan');
+            $table->string('jenis_makanan');
+            $table->string('gambar')->nullable();
+            $table->integer('harga');
+            $table->text('keterangan');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('menu');
     }
 };
