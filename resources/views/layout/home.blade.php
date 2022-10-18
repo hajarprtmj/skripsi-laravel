@@ -26,7 +26,7 @@
                     <p data-aos="fade-up" data-aos-delay="100">Sed autem laudantium dolores. Voluptatem itaque ea consequatur
                         eveniet. Eum quas beatae cumque eum quaerat.</p>
                     <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
-                        <a href="#book-a-table" class="btn-book-a-table">Reservasi</a>
+                        <a href="{{ route('menu.index') }}" class="btn-book-a-table">Order Makanan</a>
                         <a href="" class="glightbox btn-watch-video d-flex align-items-center">Order Makanan</a>
                         {{-- <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a> --}}
                     </div>
