@@ -33,11 +33,17 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
+				<form class="login100-form validate-form" method="POST" action="{{ route('register') }}">
 					<span class="login100-form-title p-b-43">
-						Login to continue
+						Register
 					</span>
                     @csrf
+
+                    <div class="wrap-input100 validate-input" data-validate = "Name is required">
+						<input class="input100" type="text" name="name" id="name">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Name</span>
+					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 						<input class="input100" type="text" name="email" id="email">
@@ -45,38 +51,26 @@
 						<span class="label-input100">Email</span>
 					</div>
 
-
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
 						<input class="input100" type="password" name="password" id="password">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Password</span>
 					</div>
-
-					<div class="flex-sb-m w-full p-t-3 p-b-32">
-						<div class="contact100-form-checkbox">
-							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-							<label class="label-checkbox100" for="ckb1">
-								Remember me
-							</label>
-						</div>
-
-						<div>
-							<a href="#" class="txt1">
-								Forgot Password?
-							</a>
-						</div>
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Confirm Password</span>
 					</div>
-
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
-							{{ __('Login') }}
+							{{ __('Register') }}
 						</button>
 					</div>
 
 					<div class="text-center p-t-46 p-b-20">
 						<span class="txt2">
-							<a href="{{ route('register') }}">Klik disini untuk membuat akun</a>
+							<a href="{{ route('login') }}">Klik disini jika memiliki akun</a>
 						</span>
 					</div>
 
