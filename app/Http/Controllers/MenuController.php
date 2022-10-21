@@ -36,6 +36,9 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
+        // if ($request->file('image')) {
+        //     $image_name = $request->file('image')->store('images','public');
+        // }
         $request->validate([
             'nama_makanan' => 'required',
             'jenis_makanan' => 'required',
@@ -46,6 +49,20 @@ class MenuController extends Controller
 
         MenuModel::create($request->all());
 
+        //upload gambar
+        // $file = Request()->gambar;
+        // $fileName = Request()->id_menu.'.'.$file->extension();
+        // $file->move(public_path('picture'), $fileName);
+
+        // $menu = [
+        //     'nama_makanan' => $request->nama_makanan,
+        //     'jenis_makanan' => $request->jenis_makanan,
+        //     'gambar' => $fileName,
+        //     'harga' => $request->harga,
+        //     'keterangan' => $request->keterangan,
+        // ];
+
+        // $this->MenuModel->addData($menu);
         return redirect()->route('menu.index');
                         // ->with('success','Menu Berhasil ditambahkan');
     }
