@@ -20,6 +20,7 @@
             <div class="section-header">
                 <h2>Our Menu</h2>
             </div>
+            <a href="{{ route('menu.create') }}" class="btn btn-danger btn-sm">Tambah Menu</a>
             <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
                 <li class="nav-item">
                     <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#menu-starters">
@@ -40,19 +41,25 @@
                     </div>
 
                     <div class="row gy-5">
-
-                        <div class="col-lg-4 menu-item">
-                            <a href="assets/img/menu/menu-item-1.png" class="glightbox"><img
-                                    src="assets/img/menu/menu-item-1.png" class="menu-img img-fluid" alt=""></a>
-                            <h4>Magnam Tiste</h4>
-                            <p class="ingredients">
-                                Lorem, deren, trataro, filede, nerada
-                            </p>
-                            <p class="price">
-                                $5.95
-                            </p>
-                        </div><!-- Menu Item -->
-
+                        @foreach ($menu as $item)
+                            <div class="col-lg-4 menu-item">
+                                <a href="{{ asset('template') }}/assets/img/menu/menu-item-1.png" class="glightbox"><img
+                                        src="{{ asset('template') }}/assets/img/menu/menu-item-1.png" class="menu-img img-fluid" alt=""></a>
+                                        <form action="{{ route('menu.destroy',$item->id_menu) }}" method="post">
+                                            <a href="{{ route('menu.edit',$item->id_menu) }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
+                                        </form>
+                                <h4>{{$item->nama_makanan}}</h4>
+                                <p class="ingredients">
+                                    {{$item->keterangan}}
+                                </p>
+                                <p class="price">
+                                    Rp. {{$item->harga}}
+                                </p>
+                            </div><!-- Menu Item -->
+                        @endforeach
                     </div>
                 </div><!-- End Starter Menu Content -->
 
@@ -66,8 +73,8 @@
                     <div class="row gy-5">
 
                         <div class="col-lg-4 menu-item">
-                            <a href="assets/img/menu/menu-item-1.png" class="glightbox"><img
-                                    src="assets/img/menu/menu-item-1.png" class="menu-img img-fluid" alt=""></a>
+                            <a href="{{ asset('template') }}/assets/img/menu/menu-item-1.png" class="glightbox"><img
+                                    src="{{ asset('template') }}/assets/img/menu/menu-item-1.png" class="menu-img img-fluid" alt=""></a>
                             <h4>es teh</h4>
                             <p class="ingredients">
                                 Lorem, deren, trataro, filede, nerada

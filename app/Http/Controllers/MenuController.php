@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\MenuModel;
 
 class MenuController extends Controller
 {
@@ -13,7 +14,8 @@ class MenuController extends Controller
      */
     public function index()
     {
-        return view('layout.menu');
+        $menu = MenuModel::all();
+        return view('layout.menu', compact('menu'));
     }
 
     /**
@@ -23,7 +25,7 @@ class MenuController extends Controller
      */
     public function create()
     {
-        //
+        return view('layout.menuCreate');
     }
 
     /**
@@ -34,7 +36,18 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_makanan' => 'required',
+            'jenis_makanan' => 'required',
+            'gambar' => 'required',
+            'harga' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+        MenuModel::create($request->all());
+
+        return redirect()->route('menu.index');
+                        // ->with('success','Menu Berhasil ditambahkan');
     }
 
     /**
@@ -54,9 +67,9 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(MenuModel $menu)
     {
-        //
+        return view('layout.menuEdit', compact('menu'));
     }
 
     /**
@@ -66,9 +79,20 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,MenuModel $menu)
     {
-        //
+        $request->validate([
+            'nama_makanan' => 'required',
+            'jenis_makanan' => 'required',
+            'gambar' => 'required',
+            'harga' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+        $menu->update($request->all());
+
+        return redirect()->route('menu.index');
+                        // ->with('success','Menu Berhasil ditambahkan');
     }
 
     /**
@@ -77,8 +101,10 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(MenuModel $menu)
     {
-        //
+        $menu->delete();
+        return redirect()->route('menu.index');
+                        // ->with('success','Menu Berhasil ditambahkan');
     }
 }
