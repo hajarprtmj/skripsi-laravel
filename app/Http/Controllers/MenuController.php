@@ -7,6 +7,10 @@ use App\Models\MenuModel;
 
 class MenuController extends Controller
 {
+    public function __construct()
+    {
+        $this->MenuModel = new MenuModel();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -36,33 +40,27 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        // if ($request->file('image')) {
-        //     $image_name = $request->file('image')->store('images','public');
-        // }
         $request->validate([
             'nama_makanan' => 'required',
             'jenis_makanan' => 'required',
-            'gambar' => 'required',
+            'gambar' => 'required|image|mimes:png,jpg',
             'harga' => 'required',
             'keterangan' => 'required',
         ]);
+        // MenuModel::create($request->all());
+        // upload file
+        $file = Request()->gambar;
+        $fileName = Request()->id_menu.'.'.$file->extension();
+        $file->move(public_path('picture'),$fileName);
 
-        MenuModel::create($request->all());
-
-        //upload gambar
-        // $file = Request()->gambar;
-        // $fileName = Request()->id_menu.'.'.$file->extension();
-        // $file->move(public_path('picture'), $fileName);
-
-        // $menu = [
-        //     'nama_makanan' => $request->nama_makanan,
-        //     'jenis_makanan' => $request->jenis_makanan,
-        //     'gambar' => $fileName,
-        //     'harga' => $request->harga,
-        //     'keterangan' => $request->keterangan,
-        // ];
-
-        // $this->MenuModel->addData($menu);
+        $data = [
+            'nama_makanan' => Request()->nama_makanan,
+            'jenis_makanan' => Request()->jenis_makanan,
+            'gambar' => $fileName,
+            'harga' => Request()->harga,
+            'keterangan' => Request()->keterangan,
+        ];
+        $this->MenuModel->addData($data);
         return redirect()->route('menu.index');
                         // ->with('success','Menu Berhasil ditambahkan');
     }

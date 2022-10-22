@@ -14,4 +14,7 @@ class MenuModel extends Model
     protected $fillable = [
         'nama_makanan','jenis_makanan','gambar','harga','keterangan'
     ];
+    public function addData($data){
+        DB::table('menu')->insert($data);
+    }
 }

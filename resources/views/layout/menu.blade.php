@@ -43,8 +43,8 @@
                     <div class="row gy-5">
                         @foreach ($menu as $item)
                             <div class="col-lg-4 menu-item">
-                                <a href="{{ asset('template') }}/assets/img/menu/menu-item-1.png" class="glightbox">
-                                        <img src="{{ asset('template') }}/assets/img/menu/menu-item-1.png" class="menu-img img-fluid" alt=""></a>
+                                <a href="{{ url('picture/'.$item->gambar) }}" class="glightbox">
+                                        <img src="{{ url('picture/'.$item->gambar) }}" class="menu-img img-fluid" alt=""></a>
                                         <form action="{{ route('menu.destroy',$item->id_menu) }}" method="post">
                                             <a href="{{ route('menu.edit',$item->id_menu) }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
                                             @csrf
