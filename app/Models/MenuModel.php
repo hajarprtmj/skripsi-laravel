@@ -17,4 +17,7 @@ class MenuModel extends Model
     public function addData($data){
         DB::table('menu')->insert($data);
     }
+    public function editData($id_menu, $data){
+        DB::table('menu')->where('id_menu', $id_menu)->update($data);
+    }
 }

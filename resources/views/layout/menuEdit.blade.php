@@ -2,7 +2,7 @@
 @section('content')
     <section id="contact" class="contact">
         <div class="container" data-aos="fade-up">
-            <form action="{{ route('menu.update',$menu->id_menu) }}" method="POST" role="form" class="p-3 p-md-4">
+            <form action="{{ route('menu.update',$menu->id_menu) }}" method="POST" role="form" class="p-3 p-md-4" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -19,10 +19,6 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="gambar"><strong>Gambar</strong></label>
-                    <input type="text" class="form-control" name="gambar" id="gambar" value="{{$menu->gambar}}">
-                </div>
-                <div class="form-group">
                     <label for="harga"><strong>Harga</strong></label>
                     <input type="text" class="form-control" name="harga" id="harga" value="{{$menu->harga}}">
                 </div>
@@ -30,11 +26,12 @@
                     <label for="keterangan"><strong>Keterangan</strong></label>
                     <textarea class="form-control" name="keterangan" rows="5" id="keterangan">{{$menu->keterangan}}</textarea>
                 </div>
-                {{-- <div class="my-3">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your message has been sent. Thank you!</div>
-                </div> --}}
+                <div class="form-group">
+                    <label for="gambar"><strong>Gambar</strong></label>
+                    <input type="file" class="form-control" name="gambar" id="gambar"
+                    accept="image/*" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])">
+                </div>
+                <div class="mt-3"><img src="{{ url('picture/'.$menu->gambar) }}" id="output" alt="" width="250"></div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-danger btn-sm">Submit</button>
                 </div>

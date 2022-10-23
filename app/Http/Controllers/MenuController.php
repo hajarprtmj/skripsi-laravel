@@ -50,8 +50,8 @@ class MenuController extends Controller
         // MenuModel::create($request->all());
         // upload file
         $file = Request()->gambar;
-        $fileName = Request()->id_menu.'.'.$file->extension();
-        $file->move(public_path('picture'),$fileName);
+        $fileName = Request()->nama_makanan.time().'.' . $file->extension();
+        $file->move(public_path('picture'), $fileName);
 
         $data = [
             'nama_makanan' => Request()->nama_makanan,
@@ -62,7 +62,7 @@ class MenuController extends Controller
         ];
         $this->MenuModel->addData($data);
         return redirect()->route('menu.index');
-                        // ->with('success','Menu Berhasil ditambahkan');
+        // ->with('success','Menu Berhasil ditambahkan');
     }
 
     /**
@@ -94,20 +94,47 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,MenuModel $menu)
+    public function update($id_menu)
     {
-        $request->validate([
-            'nama_makanan' => 'required',
-            'jenis_makanan' => 'required',
-            'gambar' => 'required',
-            'harga' => 'required',
-            'keterangan' => 'required',
-        ]);
+        if (Request()->gambar) {
+            Request()->validate([
+                'gambar' => 'required',
+                'nama_makanan' => 'required',
+                'jenis_makanan' => 'required',
+                'harga' => 'required',
+                'keterangan' => 'required',
+            ]);
 
-        $menu->update($request->all());
+            $file = Request()->gambar;
+            $fileName = time() . '.' . Request()->gambar->extension();
+            $file->move(public_path('picture'), $fileName);
 
-        return redirect()->route('menu.index');
-                        // ->with('success','Menu Berhasil ditambahkan');
+            $data = [
+                'nama_makanan' => Request()->nama_makanan,
+                'jenis_makanan' => Request()->jenis_makanan,
+                'harga' => Request()->harga,
+                'keterangan' => Request()->keterangan,
+                'gambar' => $fileName,
+            ];
+            $this->MenuModel->editData($id_menu, $data);
+            return redirect()->route('menu.index');
+        } else {
+            Request()->validate([
+                'nama_makanan' => 'required',
+                'jenis_makanan' => 'required',
+                'harga' => 'required',
+                'keterangan' => 'required',
+            ]);
+
+            $data = [
+                'nama_makanan' => Request()->nama_makanan,
+                'jenis_makanan' => Request()->jenis_makanan,
+                'harga' => Request()->harga,
+                'keterangan' => Request()->keterangan,
+            ];
+            $this->MenuModel->editData($id_menu, $data);
+            return redirect()->route('menu.index');
+        }
     }
 
     /**
@@ -120,6 +147,6 @@ class MenuController extends Controller
     {
         $menu->delete();
         return redirect()->route('menu.index');
-                        // ->with('success','Menu Berhasil ditambahkan');
+        // ->with('success','Menu Berhasil ditambahkan');
     }
 }
