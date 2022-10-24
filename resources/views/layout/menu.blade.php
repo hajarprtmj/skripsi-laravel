@@ -16,8 +16,16 @@
 
     <section class="menu" id="menu">
         <div class="container" data-aos="fade-up">
-            <h1> </h1>
-            <div class="section-header">
+            <div class="p-3 p-md-4">
+            {{-- PESAN --}}
+            @if (session('pesan'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <strong><i class="bi bi-check2-all"></i>&nbsp;{{session('pesan')}}.</strong>
+                </div>
+            @endif
+            </div>
+            <div class="section-header p-3 p-md-4">
                 <h2>Our Menu</h2>
             </div>
             <a href="{{ route('menu.create') }}" class="btn btn-danger btn-sm">Tambah Menu</a>
@@ -43,20 +51,22 @@
                     <div class="row gy-5">
                         @foreach ($menu as $item)
                             <div class="col-lg-4 menu-item">
-                                <a href="{{ url('picture/'.$item->gambar) }}" class="glightbox">
-                                        <img src="{{ url('picture/'.$item->gambar) }}" class="menu-img img-fluid" alt=""></a>
-                                        <form action="{{ route('menu.destroy',$item->id_menu) }}" method="post">
-                                            <a href="{{ route('menu.edit',$item->id_menu) }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
-                                        </form>
-                                <h4>{{$item->nama_makanan}}</h4>
+                                <a href="{{ url('picture/' . $item->gambar) }}" class="glightbox">
+                                    <img src="{{ url('picture/' . $item->gambar) }}" class="menu-img img-fluid"
+                                        alt=""></a>
+                                <form action="{{ route('menu.destroy', $item->id_menu) }}" method="post">
+                                    <a href="{{ route('menu.edit', $item->id_menu) }}" class="btn btn-warning"><i
+                                            class="bi bi-pencil-square"></i></a>
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
+                                </form>
+                                <h4>{{ $item->nama_makanan }}</h4>
                                 <p class="ingredients">
-                                    {{$item->keterangan}}
+                                    {{ $item->keterangan }}
                                 </p>
                                 <p class="price">
-                                    Rp. {{$item->harga}}
+                                    Rp. {{ $item->harga }}
                                 </p>
                             </div><!-- Menu Item -->
                         @endforeach
@@ -74,7 +84,8 @@
 
                         <div class="col-lg-4 menu-item">
                             <a href="{{ asset('template') }}/assets/img/menu/menu-item-1.png" class="glightbox"><img
-                                    src="{{ asset('template') }}/assets/img/menu/menu-item-1.png" class="menu-img img-fluid" alt=""></a>
+                                    src="{{ asset('template') }}/assets/img/menu/menu-item-1.png" class="menu-img img-fluid"
+                                    alt=""></a>
                             <h4>es teh</h4>
                             <p class="ingredients">
                                 Lorem, deren, trataro, filede, nerada

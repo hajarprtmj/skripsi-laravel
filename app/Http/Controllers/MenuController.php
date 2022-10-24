@@ -61,8 +61,8 @@ class MenuController extends Controller
             'keterangan' => Request()->keterangan,
         ];
         $this->MenuModel->addData($data);
-        return redirect()->route('menu.index');
-        // ->with('success','Menu Berhasil ditambahkan');
+        return redirect()->route('menu.index')
+            ->with('pesan','Menu Berhasil ditambahkan');
     }
 
     /**
@@ -117,7 +117,8 @@ class MenuController extends Controller
                 'gambar' => $fileName,
             ];
             $this->MenuModel->editData($id_menu, $data);
-            return redirect()->route('menu.index');
+            return redirect()->route('menu.index')
+            ->with('pesan','Menu Berhasil diupdate');
         } else {
             Request()->validate([
                 'nama_makanan' => 'required',
@@ -133,7 +134,8 @@ class MenuController extends Controller
                 'keterangan' => Request()->keterangan,
             ];
             $this->MenuModel->editData($id_menu, $data);
-            return redirect()->route('menu.index');
+            return redirect()->route('menu.index')
+            ->with('pesan','Menu Berhasil diupdate');
         }
     }
 

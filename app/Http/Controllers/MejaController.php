@@ -41,7 +41,8 @@ class MejaController extends Controller
         ]);
 
         MejaModel::create($request->all());
-        return redirect()->route('meja.index');
+        return redirect()->route('meja.index')
+        ->with('pesan','Meja Berhasil ditambahkan');;
     }
 
     /**
@@ -80,7 +81,8 @@ class MejaController extends Controller
         ]);
 
         $meja->update($request->all());
-        return redirect()->route('meja.index');
+        return redirect()->route('meja.index')
+        ->with('pesan','Meja Berhasil diupdate');
     }
 
     /**
@@ -92,6 +94,7 @@ class MejaController extends Controller
     public function destroy(MejaModel $meja)
     {
         $meja->delete();
-        return redirect()->route('meja.index');
+        return redirect()->route('meja.index')
+        ->with('pesan','Meja Berhasil dihapus');;
     }
 }
