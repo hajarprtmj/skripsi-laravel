@@ -7,8 +7,8 @@
                 <div>
                     <h4>Address</h4>
                     <p>
-                        A108 Adam Street <br>
-                        New York, NY 535022 - US<br>
+                        Jl. Raya Kasin, Kasin, Ampeldento, <br>
+                        Kec. Karang Ploso, Kabupaten Malang, Jawa Timur 65152<br>
                     </p>
                 </div>
             </div>
@@ -17,22 +17,27 @@
                 <div>
                     <h4>Opening Hours</h4>
                     <p>
-                        <strong>Mon-Sat: 11AM</strong> - 23PM<br>
-                        Sunday: Closed
+                        <strong>Open</strong> 6.30 AM<br>
+                        <strong>Close</strong> 11 PM<br>
                     </p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 footer-links d-flex">
+                <i class="bi bi-phone icon"></i>
                 <div>
+                    <h4>Reservation</h4>
+                    <p>
+                        <strong>081333071823</strong><br>
+                    </p>
                 </div>
             </div>
 
             <div class="col-lg-3 col-md-6 footer-links">
                 <h4>Follow Us</h4>
                 <div class="social-links d-flex">
-                    <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                    <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                    <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="https://bit.ly/3zaYHFO" class="twitter" target="blank"><i class="bi bi-twitter"></i></a>
+                    <a href="https://bit.ly/3CYdo06" class="facebook" target="blank"><i class="bi bi-facebook"></i></a>
+                    <a href="https://bit.ly/3N92tFG" class="instagram" target="blank"><i class="bi bi-instagram"></i></a>
                     <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
                 </div>
             </div>
