@@ -51,9 +51,10 @@
                     <div class="row gy-5">
                         @foreach ($menu as $item)
                             <div class="col-lg-4 menu-item">
-                                <a href="{{ url('picture/' . $item->gambar) }}" class="glightbox">
-                                    <img src="{{ url('picture/' . $item->gambar) }}" class="menu-img img-fluid"
-                                        alt=""></a>
+                                <a href="{{ url('picture/makanan/' . $item->gambar) }}" class="glightbox">
+                                    <img src="{{ url('picture/makanan/' . $item->gambar) }}" class="menu-img img-fluid" alt="">
+                                    <figcaption>Image by, IG:@nkcafemalang</figcaption><br>
+                                </a>
                                 <form action="{{ route('menu.destroy', $item->id_menu) }}" method="post">
                                     <a href="{{ route('menu.edit', $item->id_menu) }}" class="btn btn-warning"><i
                                             class="bi bi-pencil-square"></i></a>
@@ -84,9 +85,10 @@
 
                         @foreach ($menuMinuman as $item)
                             <div class="col-lg-4 menu-item">
-                                <a href="{{ url('picture/' . $item->gambar) }}" class="glightbox">
-                                    <img src="{{ url('picture/' . $item->gambar) }}" class="menu-img img-fluid"
-                                        alt=""></a>
+                                <a href="{{ url('picture/minuman/' . $item->gambar) }}" class="glightbox">
+                                    <img src="{{ url('picture/minuman/' . $item->gambar) }}" class="menu-img img-fluid" alt="">
+                                    <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption>
+                                </a>
                                 <form action="{{ route('menu.destroy', $item->id_menu) }}" method="post">
                                     <a href="{{ route('menu.edit', $item->id_menu) }}" class="btn btn-warning"><i
                                             class="bi bi-pencil-square"></i></a>
