@@ -18,8 +18,9 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menu = MenuModel::all();
-        return view('layout.menu', compact('menu'));
+        $menu = MenuModel::where('jenis_makanan','makanan')->get();
+        $menuMinuman = MenuModel::where('jenis_makanan','minuman')->get();
+        return view('layout.menu', compact('menu','menuMinuman'));
     }
 
     /**
