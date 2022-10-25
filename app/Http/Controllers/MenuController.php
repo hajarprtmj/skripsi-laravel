@@ -44,7 +44,7 @@ class MenuController extends Controller
             'nama_makanan' => 'required',
             'jenis_makanan' => 'required',
             'gambar' => 'required|image|mimes:png,jpg',
-            'harga' => 'required',
+            'harga' => 'required|numeric',
             'keterangan' => 'required',
         ]);
         // MenuModel::create($request->all());

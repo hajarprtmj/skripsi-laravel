@@ -37,7 +37,7 @@ class MejaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'no_meja' => 'required',
+            'no_meja' => 'required|min:2',
         ]);
 
         MejaModel::create($request->all());
