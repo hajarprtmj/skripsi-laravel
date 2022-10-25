@@ -15,10 +15,10 @@
             <div class="col-lg-3 col-md-6 footer-links d-flex">
                 <i class="bi bi-clock icon"></i>
                 <div>
-                    <h4>Opening Hours</h4>
+                    <h4>Open Hours</h4>
                     <p>
-                        <strong>Open</strong> 6.30 AM<br>
-                        <strong>Close</strong> 11 PM<br>
+                        <strong>Monday - Sunday</strong><br>
+                        6.30 AM - 11 PM<br>
                     </p>
                 </div>
             </div>
