@@ -46,8 +46,8 @@
                     @endif
                 @else
                     <li class="dropdown">
-                        <a id="navbarDropdown" class="" href="#"
-                            role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <i class="bi bi-chevron-down dropdown-indicator"></i>
                         </a>
 
@@ -64,6 +64,9 @@
                         </div>
                     </li>
                 @endguest
+                <li><a href="{{ route('cart') }}"><i class="bi bi-basket"></i>
+                    <span>&nbsp;{{ count((array) session('cart')) }}</span>
+                </a></li>
             </ul>
         </nav><!-- .navbar -->
 

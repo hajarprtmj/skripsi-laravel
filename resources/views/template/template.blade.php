@@ -37,7 +37,7 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
   {{-- Tambahan --}}
-  
+
 </head>
 
 <body>
@@ -71,6 +71,8 @@
     <!-- Template Main JS File -->
     <script src="{{ asset('template') }}/assets/js/main.js"></script>
 
+    @yield('scripts')
+    
 </body>
 
 </html>
