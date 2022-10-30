@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->id('id_transaksi');
-            $table->string('kode_meja');
             $table->date('tanggal_transaksi');
+            $table->text('pesanan');
             $table->string('tagihan');
+            $table->string('status_pembayaran');
             $table->timestamps();
         });
     }
