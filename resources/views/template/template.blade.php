@@ -30,6 +30,10 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('template') }}/assets/css/main.css" rel="stylesheet">
 
+    {{-- Ajax --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
     <!-- =======================================================
   * Template Name: Yummy - v1.2.1
   * Template URL: https://bootstrapmade.com/yummy-bootstrap-restaurant-website-template/
@@ -71,8 +75,7 @@
     <!-- Template Main JS File -->
     <script src="{{ asset('template') }}/assets/js/main.js"></script>
 
-    @yield('scripts')
-    
+
 </body>
 
 </html>

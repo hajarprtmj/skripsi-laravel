@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MejaController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ProdukController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +29,6 @@ Route::resource('meja', MejaController::class);
 
 // Cart
 Route::get('cart', [CartController::class, 'cart'])->name('cart');
-Route::get('add-to-cart/{id}', [CartController::class, 'addToCart'])->name('add.to.cart');
+Route::get('add-to-cart/{id_menu}', [CartController::class, 'addToCart'])->name('add.to.cart');
 Route::patch('update-cart', [CartController::class, 'update'])->name('update.cart');
 Route::delete('remove-from-cart', [CartController::class, 'remove'])->name('remove.from.cart');

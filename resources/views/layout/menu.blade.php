@@ -52,11 +52,12 @@
                         @foreach ($menu as $item)
                             <div class="col-lg-4 menu-item">
                                 <a href="{{ url('picture/' . $item->gambar) }}" class="glightbox">
-                                    <img src="{{ url('picture/' . $item->gambar) }}" class="menu-img img-fluid" alt="">
-                                    <figcaption>Image by, IG:@nkcafemalang</figcaption><br>
+                                    <img src="{{ url('picture/' . $item->gambar) }}" class="menu-img img-fluid"
+                                        alt="">
                                 </a>
                                 <form action="{{ route('menu.destroy', $item->id_menu) }}" method="post">
-                                    <a href="{{route('add.to.cart', $item->id_menu)}}" class="btn btn-success"><i class="bi bi-plus-circle-fill"></i></a>
+                                    <a href="{{ route('add.to.cart', $item->id_menu) }}" class="btn btn-success"><i
+                                            class="bi bi-plus-circle-fill"></i></a>
                                     <a href="{{ route('menu.edit', $item->id_menu) }}" class="btn btn-warning"><i
                                             class="bi bi-pencil-square"></i></a>
                                     @csrf
@@ -64,9 +65,11 @@
                                     <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
                                 </form>
                                 <h4>{{ $item->nama_makanan }}</h4>
-                                <p class="ingredients">
-                                    {{ $item->keterangan }}
-                                </p>
+                                <center>
+                                    <p class="ingredients" style="width: 250px">
+                                        {{ $item->keterangan }}
+                                    </p>
+                                </center>
                                 <p class="price">
                                     Rp. {{ $item->harga }}
                                 </p>
@@ -87,8 +90,8 @@
                         @foreach ($menuMinuman as $item)
                             <div class="col-lg-4 menu-item">
                                 <a href="{{ url('picture/' . $item->gambar) }}" class="glightbox">
-                                    <img src="{{ url('picture/' . $item->gambar) }}" class="menu-img img-fluid" alt="">
-                                    <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption>
+                                    <img src="{{ url('picture/' . $item->gambar) }}" class="menu-img img-fluid"
+                                        alt="">
                                 </a>
                                 <form action="{{ route('menu.destroy', $item->id_menu) }}" method="post">
                                     <a href="{{ route('menu.edit', $item->id_menu) }}" class="btn btn-warning"><i
@@ -98,9 +101,11 @@
                                     <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
                                 </form>
                                 <h4>{{ $item->nama_makanan }}</h4>
-                                <p class="ingredients">
-                                    {{ $item->keterangan }}
-                                </p>
+                                <center>
+                                    <p class="ingredients" style="width: 250px">
+                                        {{ $item->keterangan }}
+                                    </p>
+                                </center>
                                 <p class="price">
                                     Rp. {{ $item->harga }}
                                 </p>
