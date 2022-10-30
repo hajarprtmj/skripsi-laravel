@@ -94,6 +94,8 @@
                                         alt="">
                                 </a>
                                 <form action="{{ route('menu.destroy', $item->id_menu) }}" method="post">
+                                    <a href="{{ route('add.to.cart', $item->id_menu) }}" class="btn btn-success"><i
+                                        class="bi bi-plus-circle-fill"></i></a>
                                     <a href="{{ route('menu.edit', $item->id_menu) }}" class="btn btn-warning"><i
                                             class="bi bi-pencil-square"></i></a>
                                     @csrf

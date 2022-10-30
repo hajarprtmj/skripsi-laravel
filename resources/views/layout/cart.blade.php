@@ -49,8 +49,18 @@
                             </tr>
                         @endforeach
                     @endif
-
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5" class="text-right"><h3><strong>Total Rp.{{ $total }}</strong></h3></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" class="text-right">
+                            <a href="{{ route('menu.index') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Kembali kemenu</a>
+                            <a href="{{ route('transaksi') }}" class="btn btn-success">Checkout</a>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </section>
