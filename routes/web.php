@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MejaController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\ProdukController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,11 +15,12 @@ use App\Http\Controllers\ProdukController;
 |
 */
 
-Route::get('/', function () {
-    return view('layout.home');
-});
+// Route::get('/', function () {
+//     return view('layout.home');
+// });
 
 Auth::routes();
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -32,3 +32,6 @@ Route::get('cart', [CartController::class, 'cart'])->name('cart');
 Route::get('add-to-cart/{id_menu}', [CartController::class, 'addToCart'])->name('add.to.cart');
 Route::patch('update-cart', [CartController::class, 'update'])->name('update.cart');
 Route::delete('remove-from-cart', [CartController::class, 'remove'])->name('remove.from.cart');
+
+// transaksi
+Route::get('transaksi', [CartController::class, 'transaksi'])->name('transaksi');
