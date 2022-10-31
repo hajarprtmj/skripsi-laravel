@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::table('transaksi', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->nullable();
             $table->foreign('id')->references('id')->on('users');
-            $table->unsignedBigInteger('id_menu')->nullable();
-            $table->foreign('id_menu')->references('id_menu')->on('menu');
+            $table->unsignedBigInteger('id_meja')->nullable();
+            $table->foreign('id_meja')->references('id_meja')->on('meja');
         });
     }
 
@@ -31,8 +31,8 @@ return new class extends Migration
         Schema::table('transaksi', function (Blueprint $table) {
             $table->string('users');
             $table->dropForeign(['id']);
-            $table->string('menu');
-            $table->dropForeign(['id_menu']);
+            $table->string('meja');
+            $table->dropForeign(['id_meja']);
         });
     }
 };

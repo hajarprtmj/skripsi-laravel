@@ -7,6 +7,10 @@ use App\Models\MenuModel;
 
 class CartController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function cart()
     {
         return view('layout.cart');
@@ -53,5 +57,9 @@ class CartController extends Controller
             }
             session()->flash('Pesan', 'Menu berhasil dihapus');
         }
+    }
+
+    public function transaksi(){
+        return view('layout.transaksi');
     }
 }

@@ -3,7 +3,7 @@
     <section id="contact" class="contact">
         <div class="container " data-aos="fade-up">
             <div class="p-3 p-md-4">
-                {{-- PESAN --}}
+                PESAN
                 @if (session('pesan'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </div>
-            <table class="table table-hover">
+            <table class="table table-hover" id="cart">
                 <thead>
                     <th scope="col">Nama Pesanan</th>
                     <th scope="col">Harga</th>
@@ -30,34 +30,41 @@
                 <tbody>
                     @php $total = 0 @endphp
                     @if (session('cart'))
-                    @foreach (session('cart') as $id_menu => $details)
-                        @php $total += $details['harga'] * $details['quantity'] @endphp
-                        <tr data-id="{{ $id_menu }}">
-                            <td>
-                                {{ $details['nama_makanan'] }}
-                            </td>
-                            <td>Rp.{{ $details['harga'] }}</td>
-                            <td>
-                                <input type="number" value="{{ $details['quantity'] }}"
-                                    class="form-control quantity update-cart"/>
-                            </td>
-                            <td class="text-center">Rp.{{ $details['harga'] * $details['quantity'] }}</td>
-                            <td class="actions">
-                                <button class="btn btn-danger btn-sm remove-from-cart"><i class="bi bi-trash-fill"></i></button>
-                            </td>
-                        </tr>
-                    @endforeach
-                @endif
-
+                        @foreach (session('cart') as $id_menu => $details)
+                            @php $total += $details['harga'] * $details['quantity'] @endphp
+                            <tr data-id="{{ $id_menu }}">
+                                <td>
+                                    {{ $details['nama_makanan'] }}
+                                </td>
+                                <td>Rp.{{ $details['harga'] }}</td>
+                                <td data-th="Quantity">
+                                    <input type="number" value="{{ $details['quantity'] }}"
+                                        class="form-control quantity update-cart" />
+                                </td>
+                                <td class="text-center">Rp.{{ $details['harga'] * $details['quantity'] }}</td>
+                                <td class="actions">
+                                    <button class="btn btn-danger btn-sm remove-from-cart"><i
+                                            class="bi bi-trash-fill"></i></button>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5" class="text-right"><h3><strong>Total Rp.{{ $total }}</strong></h3></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" class="text-right">
+                            <a href="{{ route('menu.index') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Kembali kemenu</a>
+                            <a href="{{ route('transaksi') }}" class="btn btn-success">Checkout</a>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </section>
-@endsection
-
-@section('scripts')
     <script type="text/javascript">
-    
         $(".update-cart").change(function(e) {
             e.preventDefault();
 
@@ -98,4 +105,3 @@
         });
     </script>
 @endsection
-
