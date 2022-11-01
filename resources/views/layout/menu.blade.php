@@ -67,7 +67,7 @@
                                 <h4>{{ $item->nama_makanan }}</h4>
                                 <center>
                                     <p class="ingredients" style="width: 250px">
-                                        {{ $item->keterangan }}
+                                         {{ $item->keterangan }}
                                     </p>
                                 </center>
                                 <p class="price">
