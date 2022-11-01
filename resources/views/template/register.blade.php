@@ -56,8 +56,9 @@
 						<span class="focus-input100"></span>
 						<span class="label-input100">Password</span>
 					</div>
+
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                        <input class="input100" id="password-confirm" type="password" name="password_confirmation" required autocomplete="new-password">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Confirm Password</span>
 					</div>
