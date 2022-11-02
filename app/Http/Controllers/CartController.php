@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\MejaModel;
 use Illuminate\Http\Request;
+use ;
 use App\Models\MenuModel;
 use App\Models\TransaksiModel;
 use Carbon\Carbon;
@@ -43,12 +44,35 @@ class CartController extends Controller
 
     public function update(Request $request)
     {
-        if ($request->id_menu && $request->quantity) {
-            $cart = session()->get('cart');
-            $cart[$request->id_menu]["quantity"] = $request->quantity;
-            session()->put('cart', $cart);
-            session()->flash('pesan', 'Menu berhasil diupdate');
+        $prod_id = $request->input('product_id');
+        $quantity = $request->input('quantity');
+
+        if (Cookie::get('cart')) {
+            $cookie_data = stripslashes(Cookie::get('cart'));
+            $cart_data = json_decode($cookie_data, true);
+
+            $item_id_list = array_column($cart_data, 'item_id');
+            $prod_id_is_there = $prod_id;
+
+            if (in_array($prod_id_is_there, $item_id_list)) {
+                foreach ($cart_data as $keys => $values) {
+                    if ($cart_data[$keys]["item_id"] == $prod_id) {
+                        $cart_data[$keys]["item_quantity"] =  $quantity;
+                        $item_data = json_encode($cart_data);
+                        $minutes = 60;
+                        Cookie::queue(Cookie::make('cart', $item_data, $minutes));
+                        return response()->json(['status' => '"' . $cart_data[$keys]["nama_makanan"] . '" Quantity Updated']);
+                    }
+                }
+            }
         }
+
+        // if ($request->id_menu && $request->quantity) {
+        //     $cart = session()->get('cart');
+        //     $cart[$request->id_menu]["quantity"] = $request->quantity;
+        //     session()->put('cart', $cart);
+        //     session()->flash('pesan', 'Menu berhasil diupdate');
+        // }
     }
 
     public function remove(Request $request)
@@ -98,5 +122,9 @@ class CartController extends Controller
 
         $this->TransaksiModel->addData($data);
         return redirect()->route('menu.index');
+    }
+    public function transaksi()
+    {
+        return view('layout.transaksi');
     }
 }
