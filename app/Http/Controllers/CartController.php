@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MejaModel;
 use Illuminate\Http\Request;
 use App\Models\MenuModel;
+use App\Models\TransaksiModel;
+use Carbon\Carbon;
 
 class CartController extends Controller
 {
     public function __construct()
     {
+        $this->TransaksiModel = new TransaksiModel();
         $this->middleware('auth');
     }
     public function cart()
@@ -59,7 +63,40 @@ class CartController extends Controller
         }
     }
 
+    public function deleteCart(Request $request){
+        $request->session()->forget(['cart']);
+        return redirect()->route('cart')
+        ->with('pesan','Meja Berhasil dihapus');
+    }
+
     public function transaksi(){
-        return view('layout.transaksi');
+        $meja = MejaModel::all();
+        $cart = session()->get('cart', []);
+        return view('layout.transaksi', compact('meja'));
+    }
+
+    public function simpanTransaksi(Request $request)
+    {
+        config(['app.locale' => 'id']);
+        Carbon::setLocale('id');
+        $mydate = Carbon::now();
+
+        $request->validate([
+            'id' => 'required',
+            'id_meja' => 'required',
+            'tagihan' => 'required',
+            'pesanan' => 'required',
+        ]);
+
+        $data = [
+            'id' => Request()->id,
+            'id_meja' => Request()->id_meja,
+            'tanggal_transaksi' => $mydate,
+            'tagihan' => Request()->tagihan,
+            'pesanan' => Request()->pesanan,
+        ];
+
+        $this->TransaksiModel->addData($data);
+        return redirect()->route('menu.index');
     }
 }

@@ -32,6 +32,8 @@ Route::get('cart', [CartController::class, 'cart'])->name('cart');
 Route::get('add-to-cart/{id_menu}', [CartController::class, 'addToCart'])->name('add.to.cart');
 Route::patch('update-cart', [CartController::class, 'update'])->name('update.cart');
 Route::delete('remove-from-cart', [CartController::class, 'remove'])->name('remove.from.cart');
+Route::get('delete', [CartController::class, 'deleteCart'])->name('deleteCart');
 
 // transaksi
 Route::get('transaksi', [CartController::class, 'transaksi'])->name('transaksi');
+Route::post('/transaksi/simpan', [CartController::class, 'simpanTransaksi'])->name('add.transaksi');

@@ -13,4 +13,7 @@ class MejaModel extends Model
     protected $fillable = [
         'no_meja'
     ];
+    public function transaksi(){
+        return $this->hasMany(TransaksiModel::class);
+    }
 }

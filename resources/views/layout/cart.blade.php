@@ -3,7 +3,7 @@
     <section id="contact" class="contact">
         <div class="container " data-aos="fade-up">
             <div class="p-3 p-md-4">
-                PESAN
+                {{-- PESAN --}}
                 @if (session('pesan'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -12,6 +12,12 @@
                 @endif
             </div>
             <div class="tab-content" data-aos="fade-up" data-aos-delay="300">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a href="{{ route('menu.index') }}">Menu</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Cart</li>
+                    </ol>
+                </nav>
                 <div class="tab-pane fade active show" id="menu-starters">
                     <div class="tab-header text-center">
                         <h3><strong>Keranjang Pesanan</strong></h3>
@@ -52,12 +58,19 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="5" class="text-right"><h3><strong>Total Rp.{{ $total }}</strong></h3></td>
+                        <td colspan="5" class="text-right">
+                            <h3><strong>Total Rp.{{ $total }}</strong></h3>
+                        </td>
                     </tr>
                     <tr>
                         <td colspan="5" class="text-right">
-                            <a href="{{ route('menu.index') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Kembali kemenu</a>
-                            <a href="{{ route('transaksi') }}" class="btn btn-success">Checkout</a>
+                            <a href="{{ route('menu.index') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i>
+                                Kembali kemenu</a>
+                            @if (session('cart') >= 1)
+                                <a href="{{ route('transaksi') }}" class="btn btn-success">Checkout</a>
+                            @else
+                            @endif
+                            <a href="{{ route('deleteCart') }}">delete</a>
                         </td>
                     </tr>
                 </tfoot>

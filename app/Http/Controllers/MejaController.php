@@ -99,6 +99,6 @@ class MejaController extends Controller
     {
         $meja->delete();
         return redirect()->route('meja.index')
-        ->with('pesan','Meja Berhasil dihapus');;
+        ->with('pesan','Meja Berhasil dihapus');
     }
 }

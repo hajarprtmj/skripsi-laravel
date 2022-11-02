@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->id('id_transaksi');
-            $table->date('tanggal_transaksi');
+            $table->dateTime('tanggal_transaksi');
             $table->text('pesanan');
             $table->string('tagihan');
-            $table->string('status_pembayaran');
+            $table->integer('status_pembayaran')->default('1');
+            $table->string('foto_pembayaran')->nullable();
             $table->timestamps();
         });
     }
