@@ -151,7 +151,7 @@ class MenuController extends Controller
     public function destroy(MenuModel $menu)
     {
         $menu->delete();
-        return redirect()->route('menu.index');
-        // ->with('success','Menu Berhasil ditambahkan');
+        return redirect()->route('menu.index')
+        ->with('success','Menu Berhasil di hapus');
     }
 }

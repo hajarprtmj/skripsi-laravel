@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MejaController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\riwayatTransaksi;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +27,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('menu', MenuController::class);
 Route::resource('meja', MejaController::class);
+Route::resource('riwayat-transaksi', riwayatTransaksi::class);
 
 // Cart
 Route::get('cart', [CartController::class, 'cart'])->name('cart');
@@ -37,3 +39,7 @@ Route::get('delete', [CartController::class, 'deleteCart'])->name('deleteCart');
 // transaksi
 Route::get('transaksi', [CartController::class, 'transaksi'])->name('transaksi');
 Route::post('/transaksi/simpan', [CartController::class, 'simpanTransaksi'])->name('add.transaksi');
+
+// Pembayaran
+Route::get('bayar', [CartController::class, 'pembayaran'])->name('pembayaran');
+Route::post('simpan-pemabayaran', [CartController::class, 'simpanPembayaran'])->name('simpanPembayaran');
