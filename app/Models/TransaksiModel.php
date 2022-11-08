@@ -27,6 +27,5 @@ class TransaksiModel extends Model
         ->join('users', 'users.id', '=', 'transaksi.id')
         ->join('meja', 'meja.id_meja', '=', 'transaksi.id')
         ->first();
-
     }
 }

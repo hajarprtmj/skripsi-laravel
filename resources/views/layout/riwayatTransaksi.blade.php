@@ -15,6 +15,7 @@
                 <thead>
                     <th scope="col">No</th>
                     <th scope="col">Tanggal Pesanan</th>
+                    <th scope="col">Kategori Pembayaran</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
                 </thead>
@@ -25,6 +26,13 @@
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>{{ $item->tanggal_transaksi }}</td>
+                        <td>
+                            @if ($item->kategori_pembayaran == 1)
+                                Tunai
+                            @else
+                                Non-tunai
+                            @endif
+                        </td>
                         <td>
                             @if ($item->status_pembayaran == 1)
                                 <button class="btn btn-warning">Proses</button>

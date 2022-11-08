@@ -14,8 +14,8 @@
             <div class="tab-content" data-aos="fade-up" data-aos-delay="300">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                      <li class="breadcrumb-item"><a href="{{ route('menu.index') }}">Menu</a></li>
-                      <li class="breadcrumb-item active" aria-current="page">Cart</li>
+                        <li class="breadcrumb-item"><a href="{{ route('menu.index') }}">Menu</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Cart</li>
                     </ol>
                 </nav>
                 <div class="tab-pane fade active show" id="menu-starters">
@@ -67,7 +67,10 @@
                             <a href="{{ route('menu.index') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i>
                                 Kembali kemenu</a>
                             @if (session('cart') >= 1)
-                                <a href="{{ route('transaksi') }}" class="btn btn-success">Checkout</a>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    Checkout
+                                </button>
                             @else
                             @endif
                             {{-- <a href="{{ route('deleteCart') }}">delete</a> --}}
@@ -75,6 +78,29 @@
                     </tr>
                 </tfoot>
             </table>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Pilih Metode Pemabayarn</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Silahkan pilih salah satu
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <div class=" btn-group">
+                            <a href="{{ route('transaksiTunai') }}" type="button" class="btn btn-warning"><i
+                                    class="bi bi-cash"></i>&nbsp;Tunai</a>
+                            <a href="{{ route('transaksi') }}" type="button" class="btn btn-success"><i
+                                    class="bi bi-credit-card-2-back-fill"></i>&nbsp;Non-Tunai</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <script type="text/javascript">
@@ -102,7 +128,7 @@
 
             var ele = $(this);
 
-            if (confirm("Are you sure want to remove?")) {
+            if (confirm("Apakah anda yakin menghapus pesanan ini?")) {
                 $.ajax({
                     url: '{{ route('remove.from.cart') }}',
                     method: "DELETE",

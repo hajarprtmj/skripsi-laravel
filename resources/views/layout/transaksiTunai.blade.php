@@ -21,7 +21,7 @@
                 </nav>
                 <div class="tab-pane fade active show" id="menu-starters">
                     <div class="tab-header text-center">
-                        <h3><strong>Transaksi Non-Tunai</strong></h3>
+                        <h3><strong>Transaksi Tunai</strong></h3>
                         <br><br>
                     </div>
                 </div>
@@ -29,15 +29,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        <p>Silahkan Tranfer ke nomer rekening dibawah ini sebagai bukti pembayaran :</p>
-                        <ul>
-                            <li><strong>BRI : 7632-01-007520-53-0</strong></li>
-                            <li><strong>BCA : 7632-01-007520-53-0</strong></li>
-                            <li><strong>BNI : 7632-01-007520-53-0</strong></li>
-                        </ul>
+                        <p>Silahkan bayar pesanan setelah mengisi form berikut ini :</p>
                     </div>
                     <div class="col-sm-6">
-                        <form action="{{ route('add.transaksi') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('add.transaksiTunai') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="id"><strong>Nama</strong></label>
@@ -77,22 +72,12 @@
                             <div class="form-group">
                                 <label for="tagihan"><strong>Total Tagihan :</strong> Rp.{{ $total }}</label>
                                 <input type="hidden" class="form-control" name="tagihan" value="{{ $total }}">
-                                <input type="hidden" class="form-control" name="kategori_pembayaran" value="2">
+                                <input type="hidden" class="form-control" name="kategori_pembayaran" value="1">
                             </div>
-                            <div class="form-group">
-                                <label for="foto_pembayaran"><strong>Upload foto bukti transfer</strong></label>
-                                <input type="file" class="form-control" name="foto_pembayaran" id="foto_pembayaran" accept="image/*"
-                                    onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])">
-                                @error('foto_pembayaran')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="mt-3"><img src="" id="output" alt="" width="250"></div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-danger btn-sm">Submit</button>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>

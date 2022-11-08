@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('pesanan');
             $table->string('tagihan');
             $table->integer('status_pembayaran')->default('1');
+            $table->integer('kategori_pembayaran')->nullable();
             $table->string('foto_pembayaran')->nullable();
             $table->timestamps();
         });

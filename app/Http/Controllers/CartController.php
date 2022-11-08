@@ -92,6 +92,39 @@ class CartController extends Controller
         ->with('pesan','Meja Berhasil dihapus');
     }
 
+    public function transaksiTunai(){
+        $meja = MejaModel::all();
+        $cart = session()->get('cart', []);
+        return view('layout.transaksiTunai', compact('meja'));
+    }
+
+    public function SimpantransaksiTunai(Request $request){
+        config(['app.locale' => 'id']);
+        Carbon::setLocale('id');
+        $mydate = Carbon::now();
+
+        $request->validate([
+            'id' => 'required',
+            'id_meja' => 'required',
+            'tagihan' => 'required',
+            'pesanan' => 'required',
+            'kategori_pembayaran' => 'required',
+        ]);
+
+        $data = [
+            'id' => Request()->id,
+            'id_meja' => Request()->id_meja,
+            'tanggal_transaksi' => $mydate,
+            'tagihan' => Request()->tagihan,
+            'pesanan' => Request()->pesanan,
+            'kategori_pembayaran' => Request()->kategori_pembayaran,
+        ];
+
+        $request->session()->forget(['cart']);
+        $this->TransaksiModel->addData($data);
+        return redirect()->route('pembayaranTunai');
+    }
+
     public function transaksi(){
         $meja = MejaModel::all();
         $cart = session()->get('cart', []);
@@ -110,6 +143,7 @@ class CartController extends Controller
             'tagihan' => 'required',
             'pesanan' => 'required',
             'foto_pembayaran' => 'required|image|mimes:png,jpg',
+            'kategori_pembayaran' => 'required',
         ]);
 
         // upload file
@@ -124,6 +158,7 @@ class CartController extends Controller
             'tagihan' => Request()->tagihan,
             'pesanan' => Request()->pesanan,
             'foto_pembayaran' => $fileName,
+            'kategori_pembayaran' => Request()->kategori_pembayaran,
         ];
 
         $request->session()->forget(['cart']);
@@ -133,6 +168,9 @@ class CartController extends Controller
 
     public function pembayaran(TransaksiModel $transaksi){
         return view('layout.pembayaran', compact('transaksi'));
+    }
 
+    public function pembayaranTunai(TransaksiModel $transaksi){
+        return view('layout.pembayaranTunai', compact('transaksi'));
     }
 }
