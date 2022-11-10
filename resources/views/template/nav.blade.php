@@ -14,6 +14,7 @@
                 <li><a href="{{ route('menu.index') }}">Menu</a></li>
                 @if (auth()->user()->level == 1)
                     <li><a href="{{ route('meja.index') }}">Meja</a></li>
+                    <li><a href="{{ route('dashboard') }}">Dashboard admin</a></li>
                 @endif
                 {{-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                     <ul>

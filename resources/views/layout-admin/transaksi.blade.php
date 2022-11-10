@@ -37,7 +37,41 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            This is some text within a card block.
+                            <h4 class="card-title">Table List Transaksi</h4>
+                            <div class="table-responsive">
+                                <table class="table user-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="border-top-0">No</th>
+                                            <th class="border-top-0">Nama</th>
+                                            <th class="border-top-0">Tanggal</th>
+                                            <th class="border-top-0">Status</th>
+                                            <th class="border-top-0">Jenis Pembayaran</th>
+                                            <th class="border-top-0">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $no = 1; ?>
+                                        @foreach ($transaksi as $item)
+                                            <tr>
+                                                <td>{{ $no++ }}</td>
+                                                <td>{{ $item->name }}</td>
+                                                <td>{{ $item->tanggal_transaksi }}</td>
+                                                @if ($item->status_pembayaran == 1)
+                                                    <td><kbd>Proses</kbd></td>
+                                                @elseif ($item->status_pembayaran == 2)
+                                                    <td>Diterima</td>
+                                                @endif
+                                                @if ($item->kategori_pembayaran == 1)
+                                                    <td>Tunai</td>
+                                                @elseif ($item->kategori_pembayaran == 2)
+                                                    <td>Non-tunai</td>
+                                                @endif
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -28,4 +28,10 @@ class TransaksiModel extends Model
         ->join('meja', 'meja.id_meja', '=', 'transaksi.id')
         ->first();
     }
+    public function allData(){
+        return DB::table('transaksi')
+        ->join('users', 'users.id', '=', 'transaksi.id')
+        ->join('meja', 'meja.id_meja', '=', 'transaksi.id')
+        ->get();
+    }
 }

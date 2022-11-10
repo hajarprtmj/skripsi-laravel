@@ -14,7 +14,4 @@ class AdminController extends Controller
         $user = User::all();
         return view('layout-admin.listUser', compact('user'));
     }
-    public function transaksi(){
-        return view('layout-admin.transaksi');
-    }
 }
