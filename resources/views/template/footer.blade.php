@@ -6,10 +6,10 @@
                 <i class="bi bi-geo-alt icon"></i>
                 <div>
                     <h4>Address</h4>
-                    <p>
+                    <a href="https://goo.gl/maps/6qz1FvaRWYcCEp467" target="blank" style="color:white">
                         Jl. Raya Kasin, Kasin, Ampeldento, <br>
                         Kec. Karang Ploso, Kabupaten Malang, Jawa Timur 65152<br>
-                    </p>
+                    </a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 footer-links d-flex">
@@ -18,7 +18,7 @@
                     <h4>Open Hours</h4>
                     <p>
                         <strong>Monday - Sunday</strong><br>
-                        6.30 AM - 11 PM<br>
+                        6.30 AM - 11.00 PM<br>
                     </p>
                 </div>
             </div>
@@ -26,9 +26,9 @@
                 <i class="bi bi-phone icon"></i>
                 <div>
                     <h4>Reservation</h4>
-                    <p>
+                    <a href="https://wa.me/6281333071823" target="blank" style="color:white">
                         <strong>081333071823</strong><br>
-                    </p>
+                    </a>
                 </div>
             </div>
 
