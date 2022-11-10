@@ -64,8 +64,7 @@
                     </tr>
                     <tr>
                         <td colspan="5" class="text-right">
-                            <a href="{{ route('menu.index') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i>
-                                Kembali kemenu</a>
+                            <a href="{{ route('menu.index') }}" class="btn btn-warning"><i class="bi bi-bag-plus-fill"></i>Tambah Pesanan</a>
                             @if (session('cart') >= 1)
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal">
