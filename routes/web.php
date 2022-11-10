@@ -5,6 +5,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MejaController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\riwayatTransaksi;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,3 +48,8 @@ Route::post('/transaksi-tunai/simpan', [CartController::class, 'simpanTransaksiT
 Route::get('bayar', [CartController::class, 'pembayaran'])->name('pembayaran');
 Route::get('bayar-tunai', [CartController::class, 'pembayaranTunai'])->name('pembayaranTunai');
 Route::post('simpan-pemabayaran', [CartController::class, 'simpanPembayaran'])->name('simpanPembayaran');
+
+// Admin
+Route::get('admin/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+Route::get('admin/list-user', [AdminController::class, 'listUser'])->name('listUser');
+Route::get('admin/transaksi', [AdminController::class, 'transaksi'])->name('admintransaksi');

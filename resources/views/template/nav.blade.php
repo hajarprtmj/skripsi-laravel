@@ -12,7 +12,9 @@
                 <li><a href="/">Home</a></li>
                 {{-- <li><a href="#about">About</a></li> --}}
                 <li><a href="{{ route('menu.index') }}">Menu</a></li>
-                <li><a href="{{ route('meja.index') }}">Meja</a></li>
+                @if (auth()->user()->level == 1)
+                    <li><a href="{{ route('meja.index') }}">Meja</a></li>
+                @endif
                 {{-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                     <ul>
                         <li><a href="#">Drop Down 1</a></li>
@@ -52,7 +54,9 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            @if (auth()->user()->level == 2)
                             <a href="{{ route('riwayat-transaksi.index') }}" class=" dropdown-item">Riwayat transaksi</a>
+                            @endif
 
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
@@ -66,9 +70,12 @@
                         </div>
                     </li>
                 @endguest
-                <li><a href="{{ route('cart') }}"><i class="bi bi-basket"></i>
-                    <span>&nbsp;{{ count((array) session('cart')) }}</span>
-                </a></li>
+                @if (auth()->user()->level == 1)
+                @elseif (auth()->user()->level == 2)
+                    <li><a href="{{ route('cart') }}"><i class="bi bi-basket"></i>
+                            <span>&nbsp;{{ count((array) session('cart')) }}</span>
+                        </a></li>
+                @endif
             </ul>
         </nav><!-- .navbar -->
 

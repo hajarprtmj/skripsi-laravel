@@ -20,11 +20,15 @@
             <div class="row justify-content-between gy-5">
                 <div
                     class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
-                    <h2 data-aos="fade-up">CAFE<br>&<br>RESTO</h2>
+                    <h2 data-aos="fade-up">CAFE & RESTO</h2>
                     <p data-aos="fade-up" data-aos-delay="100">Sed autem laudantium dolores. Voluptatem itaque ea consequatur
                         eveniet. Eum quas beatae cumque eum quaerat.</p>
                     <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
-                        <a href="{{ route('menu.index') }}" class="btn-book-a-table">Order Makanan</a>
+                        @if (auth()->user()->level == 1)
+                            <a href="{{ route('dashboard') }}" class="btn-book-a-table">Menuju Page Admin</a>
+                        @elseif (auth()->user()->level == 2)
+                            <a href="{{ route('menu.index') }}" class="btn-book-a-table">Order Makanan</a>
+                        @endif
                         {{-- <a href="" class="glightbox btn-watch-video d-flex align-items-center">Order Makanan</a> --}}
                         {{-- <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a> --}}
                     </div>

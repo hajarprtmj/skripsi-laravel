@@ -28,7 +28,9 @@
             <div class="section-header p-3 p-md-4">
                 <h2>Our Menu</h2>
             </div>
-            <a href="{{ route('menu.create') }}" class="btn btn-danger btn-sm">Tambah Menu</a>
+            @if (auth()->user()->level == 1)
+                <a href="{{ route('menu.create') }}" class="btn btn-danger btn-sm">Tambah Menu</a>
+            @endif
             <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
                 <li class="nav-item">
                     <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#menu-starters">
@@ -56,18 +58,21 @@
                                         alt="">
                                 </a>
                                 <form action="{{ route('menu.destroy', $item->id_menu) }}" method="post">
-                                    <a href="{{ route('add.to.cart', $item->id_menu) }}" class="btn btn-success"><i
-                                            class="bi bi-plus-circle-fill"></i></a>
-                                    <a href="{{ route('menu.edit', $item->id_menu) }}" class="btn btn-warning"><i
-                                            class="bi bi-pencil-square"></i></a>
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
+                                    @if (auth()->user()->level == 1)
+                                        <a href="{{ route('menu.edit', $item->id_menu) }}" class="btn btn-warning"><i
+                                                class="bi bi-pencil-square"></i></a>
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
+                                    @elseif (auth()->user()->level == 2)
+                                        <a href="{{ route('add.to.cart', $item->id_menu) }}" class="btn btn-success"><i
+                                                class="bi bi-plus-circle-fill"></i>&nbsp;Tambah pesanan</a>
+                                    @endif
                                 </form>
                                 <h4>{{ $item->nama_makanan }}</h4>
                                 <center>
                                     <p class="ingredients" style="width: 250px">
-                                         {{ $item->keterangan }}
+                                        {{ $item->keterangan }}
                                     </p>
                                 </center>
                                 <p class="price">
@@ -94,13 +99,16 @@
                                         alt="">
                                 </a>
                                 <form action="{{ route('menu.destroy', $item->id_menu) }}" method="post">
-                                    <a href="{{ route('add.to.cart', $item->id_menu) }}" class="btn btn-success"><i
-                                        class="bi bi-plus-circle-fill"></i></a>
-                                    <a href="{{ route('menu.edit', $item->id_menu) }}" class="btn btn-warning"><i
-                                            class="bi bi-pencil-square"></i></a>
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
+                                    @if (auth()->user()->level == 1)
+                                        <a href="{{ route('menu.edit', $item->id_menu) }}" class="btn btn-warning"><i
+                                                class="bi bi-pencil-square"></i></a>
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
+                                    @elseif (auth()->user()->level == 2)
+                                        <a href="{{ route('add.to.cart', $item->id_menu) }}" class="btn btn-success"><i
+                                                class="bi bi-plus-circle-fill"></i>&nbsp;Tambah pesanan</a>
+                                    @endif
                                 </form>
                                 <h4>{{ $item->nama_makanan }}</h4>
                                 <center>
