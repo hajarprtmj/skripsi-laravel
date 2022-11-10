@@ -1,19 +1,5 @@
 @extends('template.template')
 @section('content')
-    <!-- ======= Breadcrumbs ======= -->
-    {{-- <div class="breadcrumbs">
-        <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
-                <h2>Sample Inner Page cv</h2>
-                <ol>
-                    <li><a href="index.html">Home</a></li>
-                    <li>Sample Inner Page</li>
-                </ol>
-            </div>
-        </div>
-    </div> --}}
-    <!-- End Breadcrumbs -->
-
     <section class="menu" id="menu">
         <div class="container" data-aos="fade-up">
             <div class="p-3 p-md-4">
@@ -52,9 +38,9 @@
                         @foreach ($menu as $item)
                             <div class="col-lg-4 menu-item">
                                 <a href="{{ url('picture/' . $item->gambar) }}" class="glightbox">
-                                    <img src="{{ url('picture/' . $item->gambar) }}" class="menu-img img-fluid"
-                                        alt="">
-                                </a>
+                                    <img src="{{ url('picture/' . $item->gambar) }}" class="card-img-fluid"
+                                        alt="" width="250" height="350">
+                                </a><div>&nbsp;</div>
                                 <form action="{{ route('menu.destroy', $item->id_menu) }}" method="post">
                                     <a href="{{ route('add.to.cart', $item->id_menu) }}" class="btn btn-success"><i
                                             class="bi bi-plus-circle-fill"></i></a>
@@ -63,7 +49,7 @@
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
-                                </form>
+                                </form><div>&nbsp;</div>
                                 <h4>{{ $item->nama_makanan }}</h4>
                                 <center>
                                     <p class="ingredients" style="width: 250px">
@@ -71,7 +57,7 @@
                                     </p>
                                 </center>
                                 <p class="price">
-                                    Rp. {{ $item->harga }}
+                                    Rp.{{ $item->harga }}
                                 </p>
                             </div><!-- Menu Item -->
                         @endforeach
@@ -90,9 +76,9 @@
                         @foreach ($menuMinuman as $item)
                             <div class="col-lg-4 menu-item">
                                 <a href="{{ url('picture/' . $item->gambar) }}" class="glightbox">
-                                    <img src="{{ url('picture/' . $item->gambar) }}" class="menu-img img-fluid"
-                                        alt="">
-                                </a>
+                                    <img src="{{ url('picture/' . $item->gambar) }}" class="card-img-fluid"
+                                        alt="" width="250" height="350">
+                                </a><div>&nbsp;</div>
                                 <form action="{{ route('menu.destroy', $item->id_menu) }}" method="post">
                                     <a href="{{ route('add.to.cart', $item->id_menu) }}" class="btn btn-success"><i
                                         class="bi bi-plus-circle-fill"></i></a>
@@ -101,7 +87,7 @@
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
-                                </form>
+                                </form><div>&nbsp;</div>
                                 <h4>{{ $item->nama_makanan }}</h4>
                                 <center>
                                     <p class="ingredients" style="width: 250px">
@@ -109,7 +95,7 @@
                                     </p>
                                 </center>
                                 <p class="price">
-                                    Rp. {{ $item->harga }}
+                                    Rp.{{ $item->harga }}
                                 </p>
                             </div><!-- Menu Item -->
                         @endforeach
