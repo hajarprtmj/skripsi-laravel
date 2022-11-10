@@ -38,7 +38,6 @@
                     <a href="https://bit.ly/3zaYHFO" class="twitter" target="blank"><i class="bi bi-twitter"></i></a>
                     <a href="https://bit.ly/3CYdo06" class="facebook" target="blank"><i class="bi bi-facebook"></i></a>
                     <a href="https://bit.ly/3N92tFG" class="instagram" target="blank"><i class="bi bi-instagram"></i></a>
-                    <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
                 </div>
             </div>
         </div>
