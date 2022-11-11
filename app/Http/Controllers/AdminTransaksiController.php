@@ -53,9 +53,12 @@ class AdminTransaksiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_transaksi)
     {
-        //
+        $data = [
+            'transaksi' => $this->TransaksiModel->detailData($id_transaksi),
+        ];
+        return view('layout-admin.transaksiShow', $data);
     }
 
     /**
@@ -76,9 +79,18 @@ class AdminTransaksiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id_transaksi)
     {
-        //
+        Request()->validate([
+            'status_pembayaran' => 'required',
+        ]);
+
+        $data = [
+            'status_pembayaran' => Request()->status_pembayaran,
+        ];
+
+        $this->TransaksiModel->editData($id_transaksi ,$data);
+        return redirect()->route('admin-transaksi.index');
     }
 
     /**

@@ -44,6 +44,7 @@
                                         <tr>
                                             <th class="border-top-0">No</th>
                                             <th class="border-top-0">Nama</th>
+                                            <th class="border-top-0">Meja</th>
                                             <th class="border-top-0">Tanggal</th>
                                             <th class="border-top-0">Status</th>
                                             <th class="border-top-0">Jenis Pembayaran</th>
@@ -56,17 +57,21 @@
                                             <tr>
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $item->name }}</td>
+                                                <td>{{ $item->no_meja }}</td>
                                                 <td>{{ $item->tanggal_transaksi }}</td>
                                                 @if ($item->status_pembayaran == 1)
                                                     <td><kbd>Proses</kbd></td>
                                                 @elseif ($item->status_pembayaran == 2)
-                                                    <td>Diterima</td>
+                                                    <td><strong>Diterima</strong></td>
                                                 @endif
                                                 @if ($item->kategori_pembayaran == 1)
                                                     <td>Tunai</td>
                                                 @elseif ($item->kategori_pembayaran == 2)
                                                     <td>Non-tunai</td>
                                                 @endif
+                                                <td>
+                                                    <a href="{{ route('admin-transaksi.show',$item->id_transaksi) }}" class="btn btn-outline-info">Detail</a>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>

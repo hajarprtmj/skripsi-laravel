@@ -32,6 +32,9 @@ class TransaksiModel extends Model
         return DB::table('transaksi')
         ->join('users', 'users.id', '=', 'transaksi.id')
         ->join('meja', 'meja.id_meja', '=', 'transaksi.id')
-        ->get();
+        ->get()->sortByDesc('tanggal_transaksi');
+    }
+    public function editData($id_transaksi, $data){
+        DB::table('transaksi')->where('id_transaksi', $id_transaksi)->update($data);
     }
 }
