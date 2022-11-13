@@ -39,20 +39,6 @@
                         <div class="card-body">
                             {{-- filter data --}}
                             <form class="row row-cols-lg-auto g-1">
-                                <div class="col">
-                                    <select class="form-select" name="status_pembayaran">
-                                        <option value="">Status Pembayaran</option>
-                                        <option value="1">Proses</option>
-                                        <option value="2">Terima</option>
-                                    </select>
-                                </div>
-                                <div class="col">
-                                    <select class="form-select" name="kategori_pembayaran">
-                                        <option value="">Kategori Pembayaran</option>
-                                        <option value="1">Tunai</option>
-                                        <option value="2">Non-Tunai</option>
-                                    </select>
-                                </div>
                                 <div class=" col">
                                     <div class="input-group">
                                         <input class="form-control" type="date" name="start"
@@ -61,10 +47,6 @@
                                             value="{{ $end }}" />
                                     </div>
                                 </div>
-                                <div class=" col">
-                                    <input class="form-control" type="text" name="q" value="{{ $q }}"
-                                        placeholder="Cari Nama pembeli..." />
-                                </div>
                                 <div class="col">
                                     <button class="btn btn-success">Search</button>
                                     <a href="{{ route('admin-transaksi.index') }}" class="btn btn-warning">Refresh
@@ -72,18 +54,16 @@
                                 </div>
                             </form>
 
-                            <h4 class="card-title">Table List Transaksi</h4>
+                            <h4 class="card-title">Table Pendapatan</h4>
                             <div class="table-responsive">
                                 <table class="table user-table">
                                     <thead>
                                         <tr>
                                             <th class="border-top-0">No</th>
                                             <th class="border-top-0">Nama</th>
-                                            <th class="border-top-0">Meja</th>
                                             <th class="border-top-0">Tanggal</th>
-                                            <th class="border-top-0">Status</th>
                                             <th class="border-top-0">Jenis Pembayaran</th>
-                                            <th class="border-top-0">Action</th>
+                                            <th class="border-top-0">Pendapatan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -92,24 +72,20 @@
                                             <tr>
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $item->name }}</td>
-                                                <td>{{ $item->no_meja }}</td>
                                                 <td>{{ $item->tanggal_transaksi }}</td>
-                                                @if ($item->status_pembayaran == 1)
-                                                    <td><kbd>Proses</kbd></td>
-                                                @elseif ($item->status_pembayaran == 2)
-                                                    <td><strong>Diterima</strong></td>
-                                                @endif
                                                 @if ($item->kategori_pembayaran == 1)
                                                     <td>Tunai</td>
                                                 @elseif ($item->kategori_pembayaran == 2)
                                                     <td>Non-tunai</td>
                                                 @endif
-                                                <td>
-                                                    <a href="{{ route('admin-transaksi.show', $item->id_transaksi) }}"
-                                                        class="btn btn-outline-info">Detail</a>
-                                                </td>
+                                                <td>Rp. {{$item->tagihan}}</td>
                                             </tr>
                                         @endforeach
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Total = </td>
+                                        <td>Rp. {{ DB::table('transaksi')->where('status_pembayaran','=','2')->sum('tagihan')}}</td>
                                     </tbody>
                                 </table>
                             </div>

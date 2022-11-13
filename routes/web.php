@@ -53,6 +53,8 @@ Route::post('simpan-pemabayaran', [CartController::class, 'simpanPembayaran'])->
 // Admin
 Route::get('admin/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 Route::get('admin/list-user', [AdminController::class, 'listUser'])->name('listUser');
+Route::get('admin/pendapatan', [AdminController::class, 'pendapatan'])->name('pendapatan');
+
 // Route::get('admin/transaksi', [AdminController::class, 'transaksi'])->name('admintransaksi');
 // Admin Transaksi
 Route::resource('admin-transaksi', AdminTransaksiController::class);
