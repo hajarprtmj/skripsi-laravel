@@ -52,15 +52,16 @@
                                     <div class="card card-stats">
                                         <div class="card-header card-header-success card-header-icon">
                                             <p class="card-category">Jumlah Transaksi</p>
-                                            <h3 class="card-title">{{ DB::table('transaksi')->count('id_transaksi') }}
+                                            <h3 class="card-title">{{ DB::table('transaksi')->where('status_pembayaran','=','2')->count('id_transaksi') }}
                                                 <small>Transaksi</small>
                                             </h3>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <h4>Statistik pembelian setiap bulan</h4>
+                            <h5>Statistik transaksi pembelian setiap bulan</h5>
                             <canvas id="myChart" height="100px"></canvas>
+
                             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
                             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -84,12 +85,36 @@
                                     options: {}
                                 };
 
-                                const myChart = new Chart(
+                                // const myChart = new Chart(
+                                //     document.getElementById('myChart'),
+                                //     config
+                                // );
+                                var myChart = new Chart(
                                     document.getElementById('myChart'),
                                     config
                                 );
-                            </script>
+                                //
+                                // const datas = {
+                                //     labels: labels2,
+                                //     datasets: [{
+                                //         label: 'Pembelian',
+                                //         backgroundColor: 'rgb(255, 99, 132)',
+                                //         borderColor: 'rgb(255, 99, 132)',
+                                //         data: transaksi2,
+                                //     }]
+                                // };
 
+                                // const configs = {
+                                //     type: 'line',
+                                //     data: datas,
+                                //     options: {}
+                                // };
+
+                                // var myChart2 = new Chart(
+                                //     document.getElementById('myChart2'),
+                                //     configs
+                                // );
+                            </script>
                         </div>
                     </div>
                 </div>

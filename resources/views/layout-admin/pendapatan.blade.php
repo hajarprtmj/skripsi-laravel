@@ -68,7 +68,9 @@
                                     </thead>
                                     <tbody>
                                         <?php $no = 1; ?>
+                                        @php $total = 0 @endphp
                                         @foreach ($transaksi as $item)
+                                        @php $total += $item['tagihan'] @endphp
                                             <tr>
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $item->name }}</td>
@@ -85,7 +87,7 @@
                                         <td></td>
                                         <td></td>
                                         <td>Total = </td>
-                                        <td>Rp. {{ DB::table('transaksi')->where('status_pembayaran','=','2')->sum('tagihan')}}</td>
+                                        <td>Rp. {{ $total }}</td>
                                     </tbody>
                                 </table>
                             </div>

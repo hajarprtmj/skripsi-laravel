@@ -21,8 +21,7 @@
                 <div
                     class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
                     <h2 data-aos="fade-up">CAFE & RESTO</h2>
-                    <p data-aos="fade-up" data-aos-delay="100">Sed autem laudantium dolores. Voluptatem itaque ea consequatur
-                        eveniet. Eum quas beatae cumque eum quaerat.</p>
+                    <p data-aos="fade-up" data-aos-delay="100">Tempat nongkrong nyaman dan ramah di kantong.</p>
                     <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
                         @if (auth()->user()->level == 1)
                             <a href="{{ route('dashboard') }}" class="btn-book-a-table">Menuju Page Admin</a>
@@ -50,31 +49,35 @@
             </div>
 
             <div class="row gy-4">
-                <div class="col-lg-7 position-relative about-img" style="background-image: url({{ asset('picture') }}/home.png) ;"
-                    data-aos="fade-up" data-aos-delay="150">
+                <div class="col-lg-7 position-relative about-img"
+                    style="background-image: url({{ asset('picture') }}/home.png) ;" data-aos="fade-up"
+                    data-aos-delay="150">
                 </div>
                 <div class="col-lg-5 d-flex align-items-end" data-aos="fade-up" data-aos-delay="300">
                     <div class="content ps-0 ps-lg-5">
                         <p class="fst-italic">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore
-                            magna aliqua.
+                            NK merupakan singkatan dari Nendes Kombet atau jika dibalik bacanya menjadi Senden Tembok. Bisa
+                            diartikan bersandar di dinding untuk sementara waktu, santai menikmati hidup. Itulah konsep unik
+                            yang dibawa oleh owner NK Cafe. Beliau menginginkan setiap pengunjung yang datang benar-benar
+                            rilek menikmati menu yang dihidangkan sekaligus suasana di sekitar Cafe.
                         </p>
+                        <h5>Ulasan Local Guide</h5>
                         <ul>
-                            <li><i class="bi bi-check2-all"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            <li><i class="bi bi-check2-all"></i><strong>Agdhy Families</strong>
+                                Tempatnya nyaman dan bersih. Pelayanan cepat. Makananya lumayan enak. Enak bgt bwt nongkrong karna tempatnya luas jd bs bawa banyak keluarga/temen
                             </li>
-                            <li><i class="bi bi-check2-all"></i> Duis aute irure dolor in reprehenderit in voluptate velit.
+                            <li><i class="bi bi-check2-all"></i><strong>Theresia Lonika</strong>
+                                Sering banget kesini tambah okeeee beutz tadi dapat bonus sawi keren euyy … tx buat staf yg mau bantuin kami baik … sukses NK and teams
                             </li>
-                            <li><i class="bi bi-check2-all"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu
-                                fugiat nulla pariatur.</li>
+                            <li><i class="bi bi-check2-all"></i> <strong>Maulana Chairudin</strong>
+                                Tempat yg bagus buat resfresh dan instagramable, makanan lumayan, rame banget kl pas hari libur, NK singkatan dari Nendes Kombet yaitu boso walikan khas kota Malang atau bahasa yg di balik yg berarti Senden Tembok atau Sandar Tembok 😊</li>
                         </ul>
-                        <p>
+                        {{-- <p>
                             Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
                             in voluptate
                             velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                             proident
-                        </p>
+                        </p> --}}
 
                     </div>
                 </div>
