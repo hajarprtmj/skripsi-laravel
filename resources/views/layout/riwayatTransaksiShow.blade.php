@@ -13,7 +13,7 @@
             </div>
             <div class="form-group">
                 <label><strong>Status Pembayaran:</strong>&emsp;@if ($transaksi->status_pembayaran == 1)
-                        <button class="btn btn-warning">Proses</button>
+                        <button class="btn btn-warning">Sedang diProses</button>
                     @else
                         <button class="btn btn-success">Diterima</button>
                     @endif

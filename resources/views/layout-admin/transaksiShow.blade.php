@@ -76,9 +76,9 @@
                             @endif
                             <div class="form-group">
                                 <label><strong>Status Pembayaran:</strong>&emsp;@if ($transaksi->status_pembayaran == 1)
-                                        <button class="btn btn-warning">Proses</button>
+                                        Sedang Diproses
                                     @else
-                                        <button class="btn btn-success">Diterima</button>
+                                        Diterima
                                     @endif
                                 </label>
                             </div>

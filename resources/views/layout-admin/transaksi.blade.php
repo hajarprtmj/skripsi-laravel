@@ -42,8 +42,8 @@
                                 <div class="col">
                                     <select class="form-select" name="status_pembayaran">
                                         <option value="">Status Pembayaran</option>
-                                        <option value="1">Proses</option>
-                                        <option value="2">Terima</option>
+                                        <option value="1">Diproses</option>
+                                        <option value="2">Diterima</option>
                                     </select>
                                 </div>
                                 <div class="col">
@@ -61,18 +61,18 @@
                                             value="{{ $end }}" />
                                     </div>
                                 </div>
-                                <div class=" col">
+                                <div class="col">
                                     <input class="form-control" type="text" name="q" value="{{ $q }}"
                                         placeholder="Cari Nama pembeli..." />
                                 </div>
-                                <div class="col">
-                                    <button class="btn btn-success">Search</button>
+                                <div class="col"  style="margin-top: 10px;margin-bottom:10px">
+                                    <button class="btn btn-success" style="margin-right: 8px">Search</button>
                                     <a href="{{ route('admin-transaksi.index') }}" class="btn btn-warning">Refresh
                                         Filter</a>
                                 </div>
                             </form>
 
-                            <h4 class="card-title">Table List Transaksi</h4>
+                            <h4 class="card-title">List Transaksi</h4>
                             <div class="table-responsive">
                                 <table class="table user-table">
                                     <thead>
@@ -95,7 +95,7 @@
                                                 <td>{{ $item->no_meja }}</td>
                                                 <td>{{ $item->tanggal_transaksi }}</td>
                                                 @if ($item->status_pembayaran == 1)
-                                                    <td><kbd>Proses</kbd></td>
+                                                    <td><kbd>diproses</kbd></td>
                                                 @elseif ($item->status_pembayaran == 2)
                                                     <td><strong>Diterima</strong></td>
                                                 @endif

@@ -35,7 +35,7 @@
                         </td>
                         <td>
                             @if ($item->status_pembayaran == 1)
-                                <button class="btn btn-warning">Proses</button>
+                                <button class="btn btn-warning">Sedang diProses</button>
                             @else
                                 <button class="btn btn-success">Diterima</button>
                             @endif

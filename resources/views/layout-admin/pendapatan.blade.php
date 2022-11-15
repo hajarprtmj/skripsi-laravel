@@ -47,14 +47,14 @@
                                             value="{{ $end }}" />
                                     </div>
                                 </div>
-                                <div class="col">
+                                <div class="col" style="margin-left: 10px">
                                     <button class="btn btn-success">Search</button>
                                     <a href="{{ route('admin-transaksi.index') }}" class="btn btn-warning">Refresh
                                         Filter</a>
                                 </div>
                             </form>
 
-                            <h4 class="card-title">Table Pendapatan</h4>
+                            <h4 class="card-title" style="margin-top: 10px">Pendapatan</h4>
                             <div class="table-responsive">
                                 <table class="table user-table">
                                     <thead>
