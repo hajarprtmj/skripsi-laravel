@@ -15,7 +15,7 @@ class AdminController extends Controller
             ->where('status_pembayaran','=','2')
             ->whereYear('tanggal_transaksi', date('Y'))
             ->groupBy(DB::raw("month_name"))
-            ->orderBy('id_transaksi', 'DESC')
+            ->orderBy('id_transaksi', 'ASC')
             ->pluck('count', 'month_name');
 
         $labels = $transaksi->keys();

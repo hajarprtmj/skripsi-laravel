@@ -113,6 +113,7 @@ class AdminTransaksiController extends Controller
 
         $data = [
             'status_pembayaran' => Request()->status_pembayaran,
+            'keterangan' => Request()->keterangan,
         ];
 
         $this->TransaksiModel->editData($id_transaksi, $data);

@@ -58,7 +58,6 @@
                                     @else
                                         Non-tunai
                                     @endif
-
                                 </label>
                             </div>
                             @if ($transaksi->kategori_pembayaran == 2)
@@ -77,11 +76,17 @@
                             <div class="form-group">
                                 <label><strong>Status Pembayaran:</strong>&emsp;@if ($transaksi->status_pembayaran == 1)
                                         Sedang Diproses
-                                    @else
+                                    @elseif ($transaksi->status_pembayaran == 2)
                                         Diterima
+                                    @elseif ($transaksi->status_pembayaran == 3)
+                                        Ditolak
                                     @endif
                                 </label>
                             </div>
+                            @if ($transaksi->status_pembayaran == 3)
+                                <label><strong>Keterangan :</strong>&emsp;{{ $transaksi->keterangan }}</label>
+                            @endif
+                            <hr>
                             <div class="form-group">
                                 <form action="{{ route('admin-transaksi.update', $transaksi->id_transaksi) }}"
                                     method="POST" role="form">
@@ -93,6 +98,13 @@
                                     <input type="radio" class="form-check-input" id="status_pembayaran"
                                         name="status_pembayaran" value="2">Diterima
                                     <label class="form-check-label" for="status_pembayaran"></label>
+                                    <input type="radio" class="form-check-input" id="status_pembayaran"
+                                        name="status_pembayaran" value="3">Ditolak
+                                    <label class="form-check-label" for="status_pembayaran"></label>
+                                    <div class=" form-group m-10" style="width: 30%">
+                                        <label for="keterangan"><strong>Keterangan</strong></label>
+                                        <input type="text" class="form-control" name="keterangan" id="keterangan" placeholder="Keterangan">
+                                    </div>
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-info btn-sm">Submit</button>
                                     </div>

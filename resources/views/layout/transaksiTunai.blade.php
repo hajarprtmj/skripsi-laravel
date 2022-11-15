@@ -29,7 +29,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        <p>Silahkan bayar pesanan setelah mengisi form berikut ini :</p>
+                        <p>Silahkan bayar pesanan ke kasir setelah mengisi form berikut ini :</p>
                     </div>
                     <div class="col-sm-6">
                         <form action="{{ route('add.transaksiTunai') }}" method="post" enctype="multipart/form-data">

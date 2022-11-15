@@ -44,6 +44,7 @@
                                         <option value="">Status Pembayaran</option>
                                         <option value="1">Diproses</option>
                                         <option value="2">Diterima</option>
+                                        <option value="3">Ditolak</option>
                                     </select>
                                 </div>
                                 <div class="col">
@@ -65,7 +66,7 @@
                                     <input class="form-control" type="text" name="q" value="{{ $q }}"
                                         placeholder="Cari Nama pembeli..." />
                                 </div>
-                                <div class="col"  style="margin-top: 10px;margin-bottom:10px">
+                                <div class="col" style="margin-top: 10px;margin-bottom:10px">
                                     <button class="btn btn-success" style="margin-right: 8px">Search</button>
                                     <a href="{{ route('admin-transaksi.index') }}" class="btn btn-warning">Refresh
                                         Filter</a>
@@ -98,6 +99,8 @@
                                                     <td><kbd>diproses</kbd></td>
                                                 @elseif ($item->status_pembayaran == 2)
                                                     <td><strong>Diterima</strong></td>
+                                                @elseif ($item->status_pembayaran == 3)
+                                                    <td><strong>Ditolak</strong></td>
                                                 @endif
                                                 @if ($item->kategori_pembayaran == 1)
                                                     <td>Tunai</td>

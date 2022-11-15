@@ -14,11 +14,16 @@
             <div class="form-group">
                 <label><strong>Status Pembayaran:</strong>&emsp;@if ($transaksi->status_pembayaran == 1)
                         <button class="btn btn-warning">Sedang diProses</button>
-                    @else
+                    @elseif ($transaksi->status_pembayaran == 2)
                         <button class="btn btn-success">Diterima</button>
+                    @elseif ($transaksi->status_pembayaran == 3)
+                        <button class="btn btn-danger">Ditolak</button>
                     @endif
                 </label>
             </div>
+            @if ($transaksi->status_pembayaran == 3)
+                <label><strong>Keterangan :</strong>&emsp;{{ $transaksi->keterangan }}</label>
+            @endif
             <div class="text-center">
                 <a href="{{ route('riwayat-transaksi.index') }}" class="btn btn-danger btn-sm">Kembali</a>
             </div>

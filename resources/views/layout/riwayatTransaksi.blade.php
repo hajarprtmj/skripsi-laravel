@@ -36,8 +36,10 @@
                         <td>
                             @if ($item->status_pembayaran == 1)
                                 <button class="btn btn-warning">Sedang diProses</button>
-                            @else
+                            @elseif ($item->status_pembayaran == 2)
                                 <button class="btn btn-success">Diterima</button>
+                            @elseif ($item->status_pembayaran == 3)
+                                <button class="btn btn-danger">Ditolak</button>
                             @endif
                         </td>
                         <td>
