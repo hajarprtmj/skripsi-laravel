@@ -6,14 +6,19 @@ use App\Models\TransaksiModel;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
     public function dashboard()
     {
+        config(['app.locale' => 'id']);
+        Carbon::setLocale('id');
+        $mydate = Carbon::now();
+
         $transaksi = TransaksiModel::select(DB::raw("COUNT(*) as count"), DB::raw("MONTHNAME(tanggal_transaksi) as month_name"))
             ->where('status_pembayaran','=','2')
-            ->whereYear('tanggal_transaksi', date('Y'))
+            ->whereYear('tanggal_transaksi', now()->year)
             ->groupBy(DB::raw("month_name"))
             ->orderBy('id_transaksi', 'ASC')
             ->pluck('count', 'month_name');
