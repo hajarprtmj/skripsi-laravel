@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\TransaksiModel;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -18,7 +18,7 @@ class AdminController extends Controller
 
         $transaksi = TransaksiModel::select(DB::raw("COUNT(*) as count"), DB::raw("MONTHNAME(tanggal_transaksi) as month_name"))
             ->where('status_pembayaran','=','2')
-            ->whereYear('tanggal_transaksi', now()->year)
+            ->whereYear('tanggal_transaksi', date($mydate))
             ->groupBy(DB::raw("month_name"))
             ->orderBy('id_transaksi', 'ASC')
             ->pluck('count', 'month_name');
