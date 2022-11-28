@@ -89,7 +89,7 @@ class CartController extends Controller
     public function deleteCart(Request $request){
         $request->session()->forget(['cart']);
         return redirect()->route('cart')
-        ->with('pesan','Meja Berhasil dihapus');
+        ->with('pesan','Menu Berhasil dihapus');
     }
 
     public function transaksiTunai(){

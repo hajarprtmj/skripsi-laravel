@@ -19,7 +19,7 @@ class riwayatTransaksi extends Controller
      */
     public function index()
     {
-        $transaksi =  TransaksiModel::all();
+        $transaksi =  TransaksiModel::latest()->orderBy('id_transaksi','DESC')->paginate(15)->withQueryString();
         return view('layout.riwayatTransaksi', compact('transaksi'));
     }
 

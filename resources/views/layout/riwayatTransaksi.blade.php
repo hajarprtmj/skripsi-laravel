@@ -22,34 +22,40 @@
                 <tbody>
                     <?php $no = 1; ?>
                     @foreach ($transaksi as $item)
-                    @if ($item->id == Auth::user()->id)
-                    <tr>
-                        <td>{{ $no++ }}</td>
-                        <td>{{ $item->tanggal_transaksi }}</td>
-                        <td>
-                            @if ($item->kategori_pembayaran == 1)
-                                Tunai
-                            @else
-                                Non-tunai
-                            @endif
-                        </td>
-                        <td>
-                            @if ($item->status_pembayaran == 1)
-                                <button class="btn btn-warning">Sedang diProses</button>
-                            @elseif ($item->status_pembayaran == 2)
-                                <button class="btn btn-success">Diterima</button>
-                            @elseif ($item->status_pembayaran == 3)
-                                <button class="btn btn-danger">Ditolak</button>
-                            @endif
-                        </td>
-                        <td>
-                            <a href="{{ route('riwayat-transaksi.show',$item->id_transaksi) }}" class="btn btn-outline-info">Detail</a>
-                        </td>
-                    </tr>
-                @endif
+                        @if ($item->id == Auth::user()->id)
+                            <tr>
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $item->tanggal_transaksi }}</td>
+                                <td>
+                                    @if ($item->kategori_pembayaran == 1)
+                                        Tunai
+                                    @else
+                                        Non-tunai
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($item->status_pembayaran == 1)
+                                        <button class="btn btn-warning">Sedang diProses</button>
+                                    @elseif ($item->status_pembayaran == 2)
+                                        <button class="btn btn-success">Diterima</button>
+                                    @elseif ($item->status_pembayaran == 3)
+                                        <button class="btn btn-danger">Ditolak</button>
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{ route('riwayat-transaksi.show', $item->id_transaksi) }}"
+                                        class="btn btn-outline-info">Detail</a>
+                                </td>
+                            </tr>
+                        @endif
                     @endforeach
                 </tbody>
             </table>
+            @if ($transaksi->hasPages())
+                <div class="card-footer">
+                    {{ $transaksi->links() }}
+                </div>
+            @endif
         </div>
     </section>
 @endsection

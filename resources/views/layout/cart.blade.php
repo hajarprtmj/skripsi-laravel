@@ -64,7 +64,8 @@
                     </tr>
                     <tr>
                         <td colspan="5" class="text-right">
-                            <a href="{{ route('menu.index') }}" class="btn btn-warning"><i class="bi bi-bag-plus-fill"></i>Tambah Pesanan</a>
+                            <a href="{{ route('menu.index') }}" class="btn btn-warning"><i
+                                    class="bi bi-bag-plus-fill"></i>Tambah Pesanan</a>
                             @if (session('cart') >= 1)
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal">
@@ -83,15 +84,17 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Pilih Metode Pemabayarn</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Pilih Metode Pemabayaran</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Silahkan pilih salah satu
+                        <center>
+                            Silahkan pilih salah satu metode pembayaran
+                        </center>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <div class=" btn-group">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="float: left">Close</button>
+                        <div class="btn-group">
                             <a href="{{ route('transaksiTunai') }}" type="button" class="btn btn-warning"><i
                                     class="bi bi-cash"></i>&nbsp;Tunai</a>
                             <a href="{{ route('transaksi') }}" type="button" class="btn btn-success"><i

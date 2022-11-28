@@ -18,7 +18,7 @@ class AdminController extends Controller
 
         $transaksi = TransaksiModel::select(DB::raw("COUNT(*) as count"), DB::raw("MONTHNAME(tanggal_transaksi) as month_name"))
             ->where('status_pembayaran','=','2')
-            ->whereYear('tanggal_transaksi', date($mydate))
+            ->whereYear('tanggal_transaksi', date('Y'))
             ->groupBy(DB::raw("month_name"))
             ->orderBy('id_transaksi', 'ASC')
             ->pluck('count', 'month_name');
