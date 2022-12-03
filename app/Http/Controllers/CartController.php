@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\MenuModel;
 use App\Models\TransaksiModel;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -43,28 +44,6 @@ class CartController extends Controller
 
     public function update(Request $request)
     {
-        // $prod_id = $request->input('product_id');
-        // $quantity = $request->input('quantity');
-
-        // if (Cookie::get('cart')) {
-        //     $cookie_data = stripslashes(Cookie::get('cart'));
-        //     $cart_data = json_decode($cookie_data, true);
-
-        //     $item_id_list = array_column($cart_data, 'item_id');
-        //     $prod_id_is_there = $prod_id;
-
-        //     if (in_array($prod_id_is_there, $item_id_list)) {
-        //         foreach ($cart_data as $keys => $values) {
-        //             if ($cart_data[$keys]["item_id"] == $prod_id) {
-        //                 $cart_data[$keys]["item_quantity"] =  $quantity;
-        //                 $item_data = json_encode($cart_data);
-        //                 $minutes = 60;
-        //                 Cookie::queue(Cookie::make('cart', $item_data, $minutes));
-        //                 return response()->json(['status' => '"' . $cart_data[$keys]["nama_makanan"] . '" Quantity Updated']);
-        //             }
-        //         }
-        //     }
-        // }
 
         if ($request->id_menu && $request->quantity) {
             $cart = session()->get('cart');
@@ -86,19 +65,22 @@ class CartController extends Controller
         }
     }
 
-    public function deleteCart(Request $request){
+    public function deleteCart(Request $request)
+    {
         $request->session()->forget(['cart']);
         return redirect()->route('cart')
-        ->with('pesan','Menu Berhasil dihapus');
+            ->with('pesan', 'Menu Berhasil dihapus');
     }
 
-    public function transaksiTunai(){
+    public function transaksiTunai()
+    {
         $meja = MejaModel::all();
         $cart = session()->get('cart', []);
         return view('layout.transaksiTunai', compact('meja'));
     }
 
-    public function SimpantransaksiTunai(Request $request){
+    public function SimpantransaksiTunai(Request $request)
+    {
         config(['app.locale' => 'id']);
         Carbon::setLocale('id');
         $mydate = Carbon::now();
@@ -125,7 +107,8 @@ class CartController extends Controller
         return redirect()->route('pembayaranTunai');
     }
 
-    public function transaksi(){
+    public function transaksi()
+    {
         $meja = MejaModel::all();
         $cart = session()->get('cart', []);
         return view('layout.transaksi', compact('meja'));
@@ -142,14 +125,14 @@ class CartController extends Controller
             'id_meja' => 'required',
             'tagihan' => 'required',
             'pesanan' => 'required',
-            'foto_pembayaran' => 'required|image|mimes:png,jpg',
+            // 'foto_pembayaran' => 'required|image|mimes:png,jpg',
             'kategori_pembayaran' => 'required',
         ]);
 
         // upload file
-        $file = Request()->foto_pembayaran;
-        $fileName = Request()->id.time().'.' . $file->extension();
-        $file->move(public_path('foto_transaksi'), $fileName);
+        // $file = Request()->foto_pembayaran;
+        // $fileName = Request()->id . time() . '.' . $file->extension();
+        // $file->move(public_path('foto_transaksi'), $fileName);
 
         $data = [
             'id' => Request()->id,
@@ -157,7 +140,7 @@ class CartController extends Controller
             'tanggal_transaksi' => $mydate,
             'tagihan' => Request()->tagihan,
             'pesanan' => Request()->pesanan,
-            'foto_pembayaran' => $fileName,
+            // 'foto_pembayaran' => $fileName,
             'kategori_pembayaran' => Request()->kategori_pembayaran,
         ];
 
@@ -166,11 +149,76 @@ class CartController extends Controller
         return redirect()->route('pembayaran');
     }
 
-    public function pembayaran(TransaksiModel $transaksi){
+    public function pembayaran(TransaksiModel $transaksi)
+    {
         return view('layout.pembayaran', compact('transaksi'));
     }
 
-    public function pembayaranTunai(TransaksiModel $transaksi){
+    public function pembayaranTunai(TransaksiModel $transaksi)
+    {
         return view('layout.pembayaranTunai', compact('transaksi'));
+    }
+
+    // Payment Gateway
+
+    public function payment(Request $request)
+    {
+        // session
+        $cart = session()->get('cart', []);
+        // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = 'SB-Mid-server-GMJlDx7Rz_ez0loB0PvhYOg5';
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => rand(),
+                'gross_amount' => $request->get('tagihan'),
+            ),
+            'customer_details' => array(
+                'first_name' => '',
+                'last_name' => '',
+                'email' => Auth::user()->email,
+            ),
+        );
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+
+        return view('layouts.payment', ['snap_token' => $snapToken]);
+    }
+
+    public function payment_post(Request $request)
+    {
+        // add data
+        config(['app.locale' => 'id']);
+        Carbon::setLocale('id');
+        $mydate = Carbon::now();
+
+        // payment gate way
+        $json = json_decode($request->get('json'));
+        $transaksi = new TransaksiModel();
+        $transaksi->status = $json->transaction_status;
+        $transaksi->id = $request->get('id');
+        $transaksi->id_meja = $request->get('id_meja');
+        $transaksi->tanggal_transaksi = $mydate;
+        $transaksi->pesanan = $request->get('pesanan');
+        $transaksi->tagihan = $request->get('tagihan');
+        $transaksi->kategori_pembayaran = $request->get('kategori_pembayaran');
+        $transaksi->email = Auth::user()->email;
+        $transaksi->transaction_id = $json->transaction_id;
+        $transaksi->order_id = $json->order_id;
+        $transaksi->gross_amount = $json->gross_amount;
+        $transaksi->payment_type = $json->payment_type;
+        $transaksi->payment_code = isset($json->payment_code) ? $json->payment_code : null;
+        $transaksi->pdf_url = isset($json->pdf_url) ? $json->pdf_url : null;
+
+        $request->session()->forget(['cart']);
+        // $this->TransaksiModel->addData($data);
+
+        return $transaksi->save() ? redirect(route('pembayaran'))->with('alert-success', 'Transaksi berhasil dibuat') : redirect(url('/'))->with('alert-failed', 'Terjadi kesalahan');
     }
 }

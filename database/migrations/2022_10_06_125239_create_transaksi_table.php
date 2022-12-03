@@ -22,6 +22,15 @@ return new class extends Migration
             $table->integer('kategori_pembayaran')->nullable();
             $table->string('foto_pembayaran')->nullable();
             $table->text('keterangan')->nullable();
+            // Tambahan untuk payment gateway Midtrans
+            $table->string('email')->nullable();
+            $table->string('status')->nullable();
+            $table->string('transaction_id')->nullable();
+            $table->string('order_id')->nullable();
+            $table->string('gross_amount')->nullable();
+            $table->string('payment_type')->nullable();
+            $table->string('payment_code')->nullable();
+            $table->string('pdf_url')->nullable();
             $table->timestamps();
         });
     }

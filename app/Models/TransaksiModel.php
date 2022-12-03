@@ -25,13 +25,13 @@ class TransaksiModel extends Model
     public function detailData($id_transaksi){
         return DB::table('transaksi')->where('id_transaksi', $id_transaksi)
         ->join('users', 'users.id', '=', 'transaksi.id')
-        ->join('meja', 'meja.id_meja', '=', 'transaksi.id')
+        ->join('meja', 'meja.id_meja', '=', 'transaksi.id_meja')
         ->first();
     }
     public function allData(){
         return DB::table('transaksi')
         ->join('users', 'users.id', '=', 'transaksi.id')
-        ->join('meja', 'meja.id_meja', '=', 'transaksi.id')
+        ->join('meja', 'meja.id_meja', '=', 'transaksi.id_meja')
         ->get()->sortByDesc('tanggal_transaksi');
     }
     public function editData($id_transaksi, $data){

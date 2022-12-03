@@ -40,7 +40,7 @@ Route::get('delete', [CartController::class, 'deleteCart'])->name('deleteCart');
 
 // transaksi
 Route::get('transaksi', [CartController::class, 'transaksi'])->name('transaksi');
-Route::post('/transaksi/simpan', [CartController::class, 'simpanTransaksi'])->name('add.transaksi');
+Route::get('/transaksi/simpan', [CartController::class, 'simpanTransaksi'])->name('add.transaksi');
 Route::get('transaksi-tunai', [CartController::class, 'transaksiTunai'])->name('transaksiTunai');
 Route::post('/transaksi-tunai/simpan', [CartController::class, 'simpanTransaksiTunai'])->name('add.transaksiTunai');
 
@@ -58,3 +58,7 @@ Route::get('admin/pendapatan', [AdminController::class, 'pendapatan'])->name('pe
 // Route::get('admin/transaksi', [AdminController::class, 'transaksi'])->name('admintransaksi');
 // Admin Transaksi
 Route::resource('admin-transaksi', AdminTransaksiController::class);
+
+// payment
+Route::get('payment', [CartController::class, 'payment'])->name('payment');
+Route::post('/payment', [CartController::class, 'payment_post']);

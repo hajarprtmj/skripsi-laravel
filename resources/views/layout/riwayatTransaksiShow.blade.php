@@ -12,6 +12,9 @@
                 <label><strong>Tagihan :</strong>&emsp;{{ $transaksi->tagihan }}</label>
             </div>
             <div class="form-group">
+                <label><strong>Nomer Meja :</strong>&emsp;{{ $transaksi->no_meja }}</label>
+            </div>
+            <div class="form-group">
                 <label><strong>Status Pembayaran:</strong>&emsp;@if ($transaksi->status_pembayaran == 1)
                         <button class="btn btn-warning">Sedang diProses</button>
                     @elseif ($transaksi->status_pembayaran == 2)
