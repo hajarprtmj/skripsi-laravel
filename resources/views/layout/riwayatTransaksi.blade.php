@@ -33,15 +33,7 @@
                                         Non-tunai
                                     @endif
                                 </td>
-                                <td>
-                                    @if ($item->status_pembayaran == 1)
-                                        <button class="btn btn-warning">Sedang diProses</button>
-                                    @elseif ($item->status_pembayaran == 2)
-                                        <button class="btn btn-success">Diterima</button>
-                                    @elseif ($item->status_pembayaran == 3)
-                                        <button class="btn btn-danger">Ditolak</button>
-                                    @endif
-                                </td>
+                                <td>{{ $item->status }}</td>
                                 <td>
                                     <a href="{{ route('riwayat-transaksi.show', $item->id_transaksi) }}"
                                         class="btn btn-outline-info">Detail</a>

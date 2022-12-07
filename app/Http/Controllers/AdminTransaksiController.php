@@ -21,7 +21,7 @@ class AdminTransaksiController extends Controller
     public function index(Request $request)
     {
         $data['q'] = $request->query('q');
-        $data['status_pembayaran'] = $request->query('status_pembayaran');
+        $data['status'] = $request->query('status');
         $data['kategori_pembayaran'] = $request->query('kategori_pembayaran');
         $data['start'] = $request->query('start');
         $data['end'] = $request->query('end');
@@ -29,10 +29,10 @@ class AdminTransaksiController extends Controller
 
         $query = TransaksiModel::select('transaksi.*', 'users.*', 'meja.*')
             ->join('users', 'users.id', '=', 'transaksi.id')
-            ->join('meja', 'meja.id_meja', '=', 'transaksi.id')
+            ->join('meja', 'meja.id_meja', '=', 'transaksi.id_meja')
             ->where(function ($query) use ($data) {
                 $query->where('name', 'like', '%' . $data['q'] . '%');
-                $query->orWhere('status_pembayaran', 'like', '%' . $data['q'] . '%');
+                $query->orWhere('status', 'like', '%' . $data['q'] . '%');
                 $query->orWhere('kategori_pembayaran', 'like', '%' . $data['q'] . '%');
             });
 
@@ -40,8 +40,8 @@ class AdminTransaksiController extends Controller
             $query->whereDate('tanggal_transaksi', '>=', $data['start']);
         if ($data['end'])
             $query->whereDate('tanggal_transaksi', '<=', $data['end']);
-        if ($data['status_pembayaran'])
-            $query->where('status_pembayaran', '=', $data['status_pembayaran']);
+        if ($data['status'])
+            $query->where('status', '=', $data['status']);
         if ($data['kategori_pembayaran'])
             $query->where('kategori_pembayaran', '=', $data['kategori_pembayaran']);
 
@@ -108,11 +108,11 @@ class AdminTransaksiController extends Controller
     public function update($id_transaksi)
     {
         Request()->validate([
-            'status_pembayaran' => 'required',
+            'status' => 'required',
         ]);
 
         $data = [
-            'status_pembayaran' => Request()->status_pembayaran,
+            'status' => Request()->status,
             'keterangan' => Request()->keterangan,
         ];
 

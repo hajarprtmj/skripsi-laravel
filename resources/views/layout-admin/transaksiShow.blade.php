@@ -62,18 +62,21 @@
                             </div>
                             @if ($transaksi->kategori_pembayaran == 2)
                                 <div class="form-group">
-                                    <label><strong>Foto :</strong>&emsp;
-                                        <div class="mt-3">
+                                    <label><strong>Status payment :</strong>&emsp;{{ $transaksi->status }}
+                                        {{-- <div class="mt-3">
                                             <a href="{{ url('foto_transaksi/' . $transaksi->foto_pembayaran) }}"
                                                 class="glightbox">
                                                 <img src="{{ url('foto_transaksi/' . $transaksi->foto_pembayaran) }}"
                                                     class="card-img-fluid" alt="" width="250" height="350">
                                             </a>
-                                        </div>
+                                        </div> --}}
                                     </label>
                                 </div>
+                                <div class="form-group">
+                                    <label><strong>Payment type :</strong>&emsp;{{ $transaksi->payment_type }}</label>
+                                </div>
                             @endif
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label><strong>Status Pembayaran:</strong>&emsp;@if ($transaksi->status_pembayaran == 1)
                                         Sedang Diproses
                                     @elseif ($transaksi->status_pembayaran == 2)
@@ -82,8 +85,8 @@
                                         Ditolak
                                     @endif
                                 </label>
-                            </div>
-                            @if ($transaksi->status_pembayaran == 3)
+                            </div> --}}
+                            @if ($transaksi->status == 3)
                                 <label><strong>Keterangan :</strong>&emsp;{{ $transaksi->keterangan }}</label>
                             @endif
                             <hr>
@@ -92,15 +95,15 @@
                                     method="POST" role="form">
                                     @csrf
                                     @method('PUT')
-                                    <input type="radio" class="form-check-input" id="status_pembayaran"
-                                        name="status_pembayaran" value="1" checked>Diproses
-                                    <label class="form-check-label" for="status_pembayaran"></label>
-                                    <input type="radio" class="form-check-input" id="status_pembayaran"
-                                        name="status_pembayaran" value="2">Diterima
-                                    <label class="form-check-label" for="status_pembayaran"></label>
-                                    <input type="radio" class="form-check-input" id="status_pembayaran"
-                                        name="status_pembayaran" value="3">Ditolak
-                                    <label class="form-check-label" for="status_pembayaran"></label>
+                                    <input type="radio" class="form-check-input" id="status"
+                                        name="status" value="pending" checked>pending
+                                    <label class="form-check-label" for="status"></label>
+                                    <input type="radio" class="form-check-input" id="status"
+                                        name="status" value="settlement">settlement
+                                    <label class="form-check-label" for="status"></label>
+                                    <input type="radio" class="form-check-input" id="status"
+                                        name="status" value="ditolak">Ditolak
+                                    <label class="form-check-label" for="status"></label>
                                     <div class=" form-group m-10" style="width: 30%">
                                         <label for="keterangan"><strong>Keterangan</strong></label>
                                         <input type="text" class="form-control" name="keterangan" id="keterangan" placeholder="Keterangan">

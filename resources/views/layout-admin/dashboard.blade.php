@@ -52,7 +52,7 @@
                                     <div class="card card-stats">
                                         <div class="card-header card-header-success card-header-icon">
                                             <p class="card-category">Jumlah Transaksi</p>
-                                            <h3 class="card-title">{{ DB::table('transaksi')->where('status_pembayaran','=','2')->count('id_transaksi') }}
+                                            <h3 class="card-title">{{ DB::table('transaksi')->where('status','=','settlement')->count('id_transaksi') }}
                                                 <small>Transaksi</small>
                                             </h3>
                                         </div>

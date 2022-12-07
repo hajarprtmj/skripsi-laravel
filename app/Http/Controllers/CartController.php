@@ -91,6 +91,7 @@ class CartController extends Controller
             'tagihan' => 'required',
             'pesanan' => 'required',
             'kategori_pembayaran' => 'required',
+            'status' => 'required',
         ]);
 
         $data = [
@@ -100,6 +101,7 @@ class CartController extends Controller
             'tagihan' => Request()->tagihan,
             'pesanan' => Request()->pesanan,
             'kategori_pembayaran' => Request()->kategori_pembayaran,
+            'status' => Request()->status,
         ];
 
         $request->session()->forget(['cart']);

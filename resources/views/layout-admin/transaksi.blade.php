@@ -40,11 +40,11 @@
                             {{-- filter data --}}
                             <form class="row row-cols-lg-auto g-1">
                                 <div class="col">
-                                    <select class="form-select" name="status_pembayaran">
+                                    <select class="form-select" name="status">
                                         <option value="">Status Pembayaran</option>
-                                        <option value="1">Diproses</option>
-                                        <option value="2">Diterima</option>
-                                        <option value="3">Ditolak</option>
+                                        <option value="pending">pending</option>
+                                        <option value="settlement">settlement</option>
+                                        <option value="ditolak">Ditolak</option>
                                     </select>
                                 </div>
                                 <div class="col">
@@ -95,13 +95,7 @@
                                                 <td>{{ $item->name }}</td>
                                                 <td>{{ $item->no_meja }}</td>
                                                 <td>{{ $item->tanggal_transaksi }}</td>
-                                                @if ($item->status_pembayaran == 1)
-                                                    <td><kbd>diproses</kbd></td>
-                                                @elseif ($item->status_pembayaran == 2)
-                                                    <td><strong>Diterima</strong></td>
-                                                @elseif ($item->status_pembayaran == 3)
-                                                    <td><strong>Ditolak</strong></td>
-                                                @endif
+                                                <td>{{ $item->status }}</td>
                                                 @if ($item->kategori_pembayaran == 1)
                                                     <td>Tunai</td>
                                                 @elseif ($item->kategori_pembayaran == 2)

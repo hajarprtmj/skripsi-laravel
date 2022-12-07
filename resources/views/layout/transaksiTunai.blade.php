@@ -73,6 +73,7 @@
                                 <label for="tagihan"><strong>Total Tagihan :</strong> Rp.{{ $total }}</label>
                                 <input type="hidden" class="form-control" name="tagihan" value="{{ $total }}">
                                 <input type="hidden" class="form-control" name="kategori_pembayaran" value="1">
+                                <input type="hidden" class="form-control" name="status" value="pending">
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-danger btn-sm">Submit</button>

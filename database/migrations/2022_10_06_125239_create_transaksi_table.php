@@ -18,7 +18,7 @@ return new class extends Migration
             $table->dateTime('tanggal_transaksi');
             $table->text('pesanan');
             $table->string('tagihan');
-            $table->integer('status_pembayaran')->default('1');
+            // $table->integer('status_pembayaran')->default('1');
             $table->integer('kategori_pembayaran')->nullable();
             $table->string('foto_pembayaran')->nullable();
             $table->text('keterangan')->nullable();

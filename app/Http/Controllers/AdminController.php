@@ -17,7 +17,7 @@ class AdminController extends Controller
         $mydate = Carbon::now();
 
         $transaksi = TransaksiModel::select(DB::raw("COUNT(*) as count"), DB::raw("MONTHNAME(tanggal_transaksi) as month_name"))
-            ->where('status_pembayaran','=','2')
+            ->where('status','=','settlement')
             ->whereYear('tanggal_transaksi', date('Y'))
             ->groupBy(DB::raw("month_name"))
             ->orderBy('id_transaksi', 'ASC')
@@ -41,14 +41,14 @@ class AdminController extends Controller
 
         $query = TransaksiModel::select('transaksi.*', 'users.*', 'meja.*')
             ->join('users', 'users.id', '=', 'transaksi.id')
-            ->join('meja', 'meja.id_meja', '=', 'transaksi.id');
+            ->join('meja', 'meja.id_meja', '=', 'transaksi.id_meja');
 
         if ($data['start'])
             $query->whereDate('tanggal_transaksi', '>=', $data['start']);
         if ($data['end'])
             $query->whereDate('tanggal_transaksi', '<=', $data['end']);
 
-        $data['transaksi'] = $query->orderby('tanggal_transaksi', 'desc')->where('status_pembayaran', '=', '2')->paginate(15)->withQueryString();
+        $data['transaksi'] = $query->orderby('tanggal_transaksi', 'desc')->where('status', '=', 'settlement')->paginate(15)->withQueryString();
         $pendapatan = DB::table('transaksi')->sum('tagihan');
         // $transaksi = [
         //     'transaksi' => $this->TransaksiModel->allData(),

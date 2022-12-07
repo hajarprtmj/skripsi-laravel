@@ -15,16 +15,9 @@
                 <label><strong>Nomer Meja :</strong>&emsp;{{ $transaksi->no_meja }}</label>
             </div>
             <div class="form-group">
-                <label><strong>Status Pembayaran:</strong>&emsp;@if ($transaksi->status_pembayaran == 1)
-                        <button class="btn btn-warning">Sedang diProses</button>
-                    @elseif ($transaksi->status_pembayaran == 2)
-                        <button class="btn btn-success">Diterima</button>
-                    @elseif ($transaksi->status_pembayaran == 3)
-                        <button class="btn btn-danger">Ditolak</button>
-                    @endif
-                </label>
+                <label><strong>Status Pembayaran:</strong>&emsp; {{ $transaksi->status }}</label>
             </div>
-            @if ($transaksi->status_pembayaran == 3)
+            @if ($transaksi->status == 'ditolak')
                 <label><strong>Keterangan :</strong>&emsp;{{ $transaksi->keterangan }}</label>
             @endif
             <div class="text-center">
