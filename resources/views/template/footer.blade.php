@@ -7,8 +7,8 @@
                 <div>
                     <h4>Address</h4>
                     <a href="https://goo.gl/maps/6qz1FvaRWYcCEp467" target="blank" style="color:white">
-                        Jl. Raya Kasin, Kasin, Ampeldento, <br>
-                        Kec. Karang Ploso, Kabupaten Malang, Jawa Timur 65152<br>
+                        Perumahan Bukit Hijau Blok F No.118 <br>
+                        Kec. Tlogomas, Kota Malang, Jawa Timur 65151<br>
                     </a>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                 <div>
                     <h4>Reservation</h4>
                     <a href="https://wa.me/6281333071823" target="blank" style="color:white">
-                        <strong>081333071823</strong><br>
+                        <strong>081230677588</strong><br>
                     </a>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                 <div class="social-links d-flex">
                     <a href="https://bit.ly/3zaYHFO" class="twitter" target="blank"><i class="bi bi-twitter"></i></a>
                     <a href="https://bit.ly/3CYdo06" class="facebook" target="blank"><i class="bi bi-facebook"></i></a>
-                    <a href="https://bit.ly/3N92tFG" class="instagram" target="blank"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.instagram.com/infokonserindonesiaa/?hl=id" class="instagram" target="blank"><i class="bi bi-instagram"></i></a>
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@
 
     <div class="container">
         <div class="copyright">
-            &copy; Copyright <strong><span>NK KAFE</span></strong>. 2022
+            &copy; Copyright <strong><span>Sound Of Downtown</span></strong>. 2023
         </div>
     </div>
 

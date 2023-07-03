@@ -20,20 +20,16 @@
             <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
                 <li class="nav-item">
                     <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#menu-starters">
-                        <h4>Makanan</h4>
+                        <h4>INFORMASI TIKET KONSER</h4>
                     </a>
-                </li><!-- End tab nav item -->
-                <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-breakfast">
-                        <h4>Minuman</h4>
-                    </a><!-- End tab nav item -->
+                
             </ul>
             <div class="tab-content" data-aos="fade-up" data-aos-delay="300">
                 <div class="tab-pane fade active show" id="menu-starters">
 
                     <div class="tab-header text-center">
-                        <p>Menu</p>
-                        <h3>Makanan</h3>
+                        <p>DAFTAR</p>
+                        <h3>KONSER</h3>
                     </div>
 
                     <div class="row gy-5">
