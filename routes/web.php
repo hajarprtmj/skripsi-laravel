@@ -31,6 +31,8 @@ Route::resource('menu', MenuController::class);
 Route::resource('meja', MejaController::class);
 Route::resource('riwayat-transaksi', riwayatTransaksi::class);
 
+Auth::routes(['verify' => true]);
+
 // Cart
 Route::get('cart', [CartController::class, 'cart'])->name('cart');
 Route::get('add-to-cart/{id_menu}', [CartController::class, 'addToCart'])->name('add.to.cart');
